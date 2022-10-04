@@ -15,7 +15,7 @@ import com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator;
 
 @Entity
 @Table(name = "userdetails")
-public class UserDetails {
+public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq")
 	@GenericGenerator(name = "users_seq", strategy = "com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator", parameters = {

@@ -10,7 +10,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator;
-import com.mmt.user.model.UserDetails;
+import com.mmt.user.model.User;
 
 @Entity
 public class Address {
@@ -35,7 +35,7 @@ public class Address {
 	private String country;
 	
 	@OneToOne
-	private UserDetails userd;
+	private User userd;
 	public String getName() {
 		return name;
 	}
