@@ -5,5 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.mmt.user.model.User;
 
 public interface UserDao extends JpaRepository<User, String>{
+	boolean findByUserEmailIdAndPassword(String emailId , String password);
 
 }

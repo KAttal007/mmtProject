@@ -11,7 +11,6 @@ import com.mmt.flights.model.Flight;
 import com.mmt.flights.services.FlightService;
 import com.mmt.user.model.User;
 
-
 @Controller
 public class BookFlightController {
 	@Autowired
@@ -20,8 +19,9 @@ public class BookFlightController {
 	
 	@RequestMapping("bookFlight") //-- bookFlightPage
 	public String bookFlight(Flight flight , @RequestParam("noOfSeats")int noOfSeats ,@RequestParam("flightId")String flightId ,HttpSession session) {
-		User user = (User) session.getAttribute("user");
-		if(fs.bookFlight(user, flightId, noOfSeats)) return "succesfullyBookedFlight";
+		String userId = (String) session.getAttribute("user");
+		if(userId== null) return "userLoginPage";
+		if(fs.bookFlight(userId, flightId, noOfSeats)) return "succesfullyBookedFlight";
 		return "BookedFlightFailed";
 	}
 }

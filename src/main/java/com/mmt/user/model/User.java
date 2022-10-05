@@ -22,7 +22,6 @@ import com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "userdetails")
@@ -44,7 +43,7 @@ public class User {
 	private String mobileNumber;
 	@NotEmpty
 	@Email
-	private String mailID;
+	private String emailId;
 	@NotEmpty
 	private String password;
 	@OneToOne(mappedBy = "userd")
@@ -95,12 +94,12 @@ public class User {
 	}
 
 	
-	public String getMailID() {
-		return mailID;
+	public String getEmailId() {
+		return emailId;
 	}
 
-	public void setMailID(String mailID) {
-		this.mailID = mailID;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
 
 	public String getPassword() {

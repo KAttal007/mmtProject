@@ -36,7 +36,8 @@ public class FlightService implements FlightServiceInterface {
 	}
 
 	@Override
-	public boolean bookFlight(User user, String flightId, int noOfSeats) {
+	public boolean bookFlight(String userId, String flightId, int noOfSeats) {
+		User user = ud.findById(userId).get();
 		Flight flight = fd.findById(flightId).get();
 		int emptySeats = flight.getNoOfSeats();
 		if (emptySeats < noOfSeats)
@@ -88,6 +89,12 @@ public class FlightService implements FlightServiceInterface {
 		if (noOfSeatsRequired > noOfSeats(flightId))
 			return false;
 		return true;
+	}
+
+	@Override
+	public Flight viewFlightDetails(String flight) {
+		// TODO Auto-generated method stub
+		return fd.findById(flight).get();
 	}
 
 }
