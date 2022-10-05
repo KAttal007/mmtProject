@@ -15,10 +15,10 @@ import com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator;
 @Table(name = "hoteldetails")
 public class Hotel {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_seq")
-	@GenericGenerator(name = "address_seq", strategy = "com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator", parameters = {
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hotel_seq")
+	@GenericGenerator(name = "hotel_seq", strategy = "com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator", parameters = {
 			@Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
-			@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "Address_"),
+			@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "HotelID_"),
 			@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
 	private String hotelId;
 	private String hotelName;

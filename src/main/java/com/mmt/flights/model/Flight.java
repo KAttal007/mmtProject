@@ -1,7 +1,5 @@
 package com.mmt.flights.model;
 
-import java.sql.Time;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +15,7 @@ import com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator;
 
 @Entity
 @Table(name = "flightdetails")
-public class Flights {
+public class Flight {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "flights_seq")
 	@GenericGenerator(name = "flights_seq", strategy = "com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator", parameters = {
@@ -27,9 +25,9 @@ public class Flights {
 	private String flightId;
 	private String flightNumber;
 	private String airlineName;
-	private Time flightDuration;
-	private Time flightDeparture;
-	private Time flightArrival;
+	private String flightDuration;
+	private String flightDeparture;
+	private String flightArrival;
 	private String flightSource;
 	private String flightDestination;
 
@@ -84,27 +82,27 @@ public class Flights {
 		this.airlineName = airlineName;
 	}
 
-	public Time getFlightDuration() {
+	public String getFlightDuration() {
 		return flightDuration;
 	}
 
-	public void setFlightDuration(Time flightDuration) {
+	public void setFlightDuration(String flightDuration) {
 		this.flightDuration = flightDuration;
 	}
 
-	public Time getFlightDeparture() {
+	public String getFlightDeparture() {
 		return flightDeparture;
 	}
 
-	public void setFlightDeparture(Time flightDeparture) {
+	public void setFlightDeparture(String flightDeparture) {
 		this.flightDeparture = flightDeparture;
 	}
 
-	public Time getFlightArrival() {
+	public String getFlightArrival() {
 		return flightArrival;
 	}
 
-	public void setFlightArrival(Time flightArrival) {
+	public void setFlightArrival(String flightArrival) {
 		this.flightArrival = flightArrival;
 	}
 

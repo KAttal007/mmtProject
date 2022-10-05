@@ -1,22 +1,22 @@
 package com.mmt.bookedFlight.model;
 
-//import java.util.List;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
-import com.mmt.flights.model.Flights;
+import com.mmt.flights.model.Flight;
 import com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator;
 import com.mmt.user.model.User;
-//import com.mmt.user.passengers.Passengers;
 
 @Entity
 @Table(name = "bookedflights")
@@ -30,9 +30,8 @@ public class BookedFlight {
 	private String bookedFlightId;
 	private int noOfSeats;
 	private int price;
-	//private List<Passengers> passengers;
 	@OneToOne
-	private Flights flight;
+	private Flight flight;
 	@ManyToOne
 	private User user;
 	public String getBookedFlightId() {
@@ -58,10 +57,10 @@ public class BookedFlight {
 	 * public List<Passengers> getPassengers() { return passengers; } public void
 	 * setPassengers(List<Passengers> passengers) { this.passengers = passengers; }
 	 */
-	public Flights getFlight() {
+	public Flight getFlight() {
 		return flight;
 	}
-	public void setFlight(Flights flight) {
+	public void setFlight(Flight flight) {
 		this.flight = flight;
 	}
 	public User getUser() {
