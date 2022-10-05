@@ -25,7 +25,6 @@ public class Address {
 	            }
 	            )
 	private String addressId;
-	private String name;
 	private String houseNo;
 	private String streetName;
 	private String area;
@@ -36,12 +35,7 @@ public class Address {
 	
 	@OneToOne
 	private User userd;
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+
 	public String getHouseNo() {
 		return houseNo;
 	}
