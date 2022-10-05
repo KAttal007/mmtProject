@@ -1,7 +1,5 @@
 package com.mmt.hotels.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,12 +9,11 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
-import com.mmt.address.Address;
 import com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator;
 
 @Entity
 @Table(name = "hoteldetails")
-public class Hotels {
+public class Hotel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_seq")
 	@GenericGenerator(name = "address_seq", strategy = "com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator", parameters = {
@@ -26,11 +23,13 @@ public class Hotels {
 	private String hotelId;
 	private String hotelName;
 	private String hotelBrand;
-
-	private List<Room> typesOfRooms;
-	private float priceAccToRoom;
-
-	private Address hotelAdd;
+	private float priceAcRoom;
+	private float priceNonAcRoom;
+	private String hotelCity;
+	private int noOfAcRooms;
+	private int noOfNonAcRooms;
+	private int noOfAvilableAcRoom;
+	private int noOfAvilableNonAcRoom;
 
 	public String getHotelId() {
 		return hotelId;
@@ -56,28 +55,60 @@ public class Hotels {
 		this.hotelBrand = hotelBrand;
 	}
 
-	public List<Room> getTypesOfRooms() {
-		return typesOfRooms;
+	public int getNoOfAvilableAcRoom() {
+		return noOfAvilableAcRoom;
 	}
 
-	public void setTypesOfRooms(List<Room> typesOfRooms) {
-		this.typesOfRooms = typesOfRooms;
+	public void setNoOfAvilableAcRoom(int noOfAvilableAcRoom) {
+		this.noOfAvilableAcRoom = noOfAvilableAcRoom;
 	}
 
-	public float getPriceAccToRoom() {
-		return priceAccToRoom;
+	public int getNoOfAvilableNonAcRoom() {
+		return noOfAvilableNonAcRoom;
 	}
 
-	public void setPriceAccToRoom(float priceAccToRoom) {
-		this.priceAccToRoom = priceAccToRoom;
+	public void setNoOfAvilableNonAcRoom(int noOfAvilableNonAcRoom) {
+		this.noOfAvilableNonAcRoom = noOfAvilableNonAcRoom;
 	}
 
-	public Address getHotelAdd() {
-		return hotelAdd;
+	public String getHotelCity() {
+		return hotelCity;
 	}
 
-	public void setHotelAdd(Address hotelAdd) {
-		this.hotelAdd = hotelAdd;
+	public void setHotelCity(String hotelCity) {
+		this.hotelCity = hotelCity;
+	}
+
+	public float getPriceAcRoom() {
+		return priceAcRoom;
+	}
+
+	public void setPriceAcRoom(float priceAcRoom) {
+		this.priceAcRoom = priceAcRoom;
+	}
+
+	public float getPriceNonAcRoom() {
+		return priceNonAcRoom;
+	}
+
+	public void setPriceNonAcRoom(float priceNonAcRoom) {
+		this.priceNonAcRoom = priceNonAcRoom;
+	}
+
+	public int getNoOfAcRooms() {
+		return noOfAcRooms;
+	}
+
+	public void setNoOfAcRooms(int noOfAcRooms) {
+		this.noOfAcRooms = noOfAcRooms;
+	}
+
+	public int getNoOfNonAcRooms() {
+		return noOfNonAcRooms;
+	}
+
+	public void setNoOfNonAcRooms(int noOfNonAcRooms) {
+		this.noOfNonAcRooms = noOfNonAcRooms;
 	}
 
 }

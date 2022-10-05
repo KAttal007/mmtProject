@@ -1,6 +1,6 @@
 package com.mmt.bookedFlight.model;
 
-import java.util.List;
+//import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -15,9 +16,10 @@ import org.hibernate.annotations.Parameter;
 import com.mmt.flights.model.Flights;
 import com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator;
 import com.mmt.user.model.User;
-import com.mmt.user.passengers.Passengers;
+//import com.mmt.user.passengers.Passengers;
 
 @Entity
+@Table(name = "bookedflights")
 public class BookedFlight {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bookedflight_seq")
@@ -28,7 +30,7 @@ public class BookedFlight {
 	private String bookedFlightId;
 	private int noOfSeats;
 	private int price;
-	private List<Passengers> passengers;
+	//private List<Passengers> passengers;
 	@OneToOne
 	private Flights flight;
 	@ManyToOne
@@ -51,12 +53,11 @@ public class BookedFlight {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public List<Passengers> getPassengers() {
-		return passengers;
-	}
-	public void setPassengers(List<Passengers> passengers) {
-		this.passengers = passengers;
-	}
+
+	/*
+	 * public List<Passengers> getPassengers() { return passengers; } public void
+	 * setPassengers(List<Passengers> passengers) { this.passengers = passengers; }
+	 */
 	public Flights getFlight() {
 		return flight;
 	}
