@@ -1,5 +1,7 @@
 package com.mmt.user.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,7 +40,15 @@ public class User {
 	private Address address;
 	
 	@OneToMany(mappedBy = "user")
-	private BookedFlight bookedflight;
+	private List<BookedFlight> bookedflight;
+
+	public List<BookedFlight> getBookedflight() {
+		return bookedflight;
+	}
+
+	public void setBookedflight(List<BookedFlight> bookedflight) {
+		this.bookedflight = bookedflight;
+	}
 
 	public Address getAddress() {
 		return address;
