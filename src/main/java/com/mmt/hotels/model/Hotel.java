@@ -30,6 +30,15 @@ public class Hotel {
 	private int noOfNonAcRooms;
 	private int noOfAvilableAcRoom;
 	private int noOfAvilableNonAcRoom;
+	private Boolean isAc;
+
+	public Boolean getIsAc() {
+		return isAc;
+	}
+
+	public void setIsAc(Boolean isAc) {
+		this.isAc = isAc;
+	}
 
 	public String getHotelId() {
 		return hotelId;

@@ -1,22 +1,28 @@
 package com.mmt.user.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import com.mmt.address.Address;
 import com.mmt.bookedFlight.model.BookedFlight;
+import com.mmt.bookedHotel.model.BookedHotel;
 import com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "userdetails")
@@ -28,28 +34,26 @@ public class User {
 			@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "User_"),
 			@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
 	private String userId;
+	@NotEmpty
 	private String firstName;
+	@NotEmpty
 	private String middleName;
+	@NotEmpty
 	private String lastName;
-	private long mobileNumber;
+	@NotEmpty
+	private String mobileNumber;
+	@NotEmpty
 	@Email
 	private String mailID;
-
+	@NotEmpty
 	private String password;
 	@OneToOne(mappedBy = "userd")
 	private Address address;
-	
 	@OneToMany(mappedBy = "user")
-	private List<BookedFlight> bookedflight;
-
-	public List<BookedFlight> getBookedflight() {
-		return bookedflight;
-	}
-
-	public void setBookedflight(List<BookedFlight> bookedflight) {
-		this.bookedflight = bookedflight;
-	}
-
+	private List<BookedHotel> hotelBooking = new ArrayList<>();
+	@OneToMany(mappedBy = "user")
+	private List<BookedFlight> flightBooking = new ArrayList<>();
+	//sample comment
 	public Address getAddress() {
 		return address;
 	}
@@ -90,14 +94,7 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public long getMobileNumber() {
-		return mobileNumber;
-	}
-
-	public void setMobileNumber(long mobileNumber) {
-		this.mobileNumber = mobileNumber;
-	}
-
+	
 	public String getMailID() {
 		return mailID;
 	}
@@ -114,4 +111,32 @@ public class User {
 		this.password = password;
 	}
 
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+
+	public List<BookedHotel> getHotel() {
+		return hotelBooking;
+	}
+
+	public void setHotel(List<BookedHotel> hotel) {
+		this.hotelBooking = hotel;
+	}
+
+	public List<BookedFlight> getFlight() {
+		return flightBooking;
+	}
+
+	public void setFlight(List<BookedFlight> flight) {
+		this.flightBooking = flight;
+	}
+
+	
+
+	
+	
 }

@@ -28,12 +28,40 @@ public class Flight {
 	private String flightNumber;
 	private String airlineName;
 	private String flightDuration;
-	private String flightDeparture;
-	private String flightArrival;
+	private String flightDeparture; // time
+	private String flightArrival; // time
 	private String flightSource;
 	private String flightDestination;
+	
+	private int pricePerSeat;
+	private int noOfAvilableSeats;
+	private int noOfSeats;
 
 	
+	public int getPricePerSeat() {
+		return pricePerSeat;
+	}
+
+	public void setPricePerSeat(int pricePerSeat) {
+		this.pricePerSeat = pricePerSeat;
+	}
+
+	public int getNoOfAvilableSeats() {
+		return noOfAvilableSeats;
+	}
+
+	public void setNoOfAvilableSeats(int noOfAvilableSeats) {
+		this.noOfAvilableSeats = noOfAvilableSeats;
+	}
+
+	public int getNoOfSeats() {
+		return noOfSeats;
+	}
+
+	public void setNoOfSeats(int noOfSeats) {
+		this.noOfSeats = noOfSeats;
+	}
+
 	@OneToMany(mappedBy = "flight")
 	private List<BookedFlight> bookedflights;
 
