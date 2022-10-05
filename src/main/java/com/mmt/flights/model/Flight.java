@@ -25,8 +25,9 @@ public class Flight {
 			@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "Flight_"),
 			@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
 	private String flightId;
-	private String flightNumber;
 	private String airlineName;
+	//private String airlineTag;
+	private String flightNumber;
 	private String flightDuration;
 	private String flightDeparture; // time
 	private String flightArrival; // time
@@ -38,6 +39,13 @@ public class Flight {
 	private int noOfSeats;
 
 	
+	/*
+	 * public String getAirlineTag() { return airlineTag; }
+	 * 
+	 * public void setAirlineTag(String airlineTag) { this.airlineTag = airlineTag;
+	 * }
+	 */
+
 	public int getPricePerSeat() {
 		return pricePerSeat;
 	}

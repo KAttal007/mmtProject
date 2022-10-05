@@ -9,12 +9,11 @@ import com.mmt.hotels.model.Hotel;
 
 @Controller
 public class UpdateHotelsController {
-	@Autowired
-	private AdminServiceInterface as;
-	
-	@RequestMapping("updateHotel") // --- updateHotelPage
-	public String updateHotel(Hotel hotel) {
-		as.updateHoetl(hotel);
-		return "hotelUpdatedSuccesfully";
-	}
+	/*
+	 * @Autowired private AdminServiceInterface as;
+	 * 
+	 * @RequestMapping("updateHotel") // --- updateHotelPage public String
+	 * updateHotel(Hotel hotel) { as.updateHotel(hotel); return
+	 * "hotelUpdatedSuccesfully"; }
+	 */
 }

@@ -10,7 +10,7 @@ public interface AdminServiceInterface {
 	public boolean removeUser(String userId);
 	public boolean addHotel(Hotel hotel);
 	public boolean removeHotel(String hotelId);
-	public boolean updateHoetl(Hotel hotel);
+	public boolean updateHotel(Hotel hotel);
 	public boolean addFlight(Flight flight);
 	public boolean removeFlight(String flightId);
 	public boolean updateFlight(Flight flight);

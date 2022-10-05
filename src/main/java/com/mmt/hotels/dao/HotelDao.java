@@ -8,6 +8,6 @@ import com.mmt.hotels.model.Hotel;
 
 public interface HotelDao extends JpaRepository<Hotel, String> {
 	List<Hotel> findByHotelCity(String city);
-	List<Hotel> findByHotelCityAndisAcTrue(String city);
-	List<Hotel> findByHotelCityAndisAcFalse(String city);
+	List<Hotel> findByHotelCityAndIsAcTrue(String city);
+	List<Hotel> findByHotelCityAndIsAcFalse(String city);
 }

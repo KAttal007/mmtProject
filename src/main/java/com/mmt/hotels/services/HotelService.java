@@ -38,7 +38,7 @@ public class HotelService implements HotelServiceInterface{
 	@Override
 	public List<Hotel> hotelAtDestinationCityAc(String city) {
 		
-		return hd.findByHotelCityAndisAcTrue(city);
+		return hd.findByHotelCityAndIsAcTrue(city);
 	}
 
 	@Override
@@ -109,7 +109,7 @@ public class HotelService implements HotelServiceInterface{
 
 	@Override
 	public List<Hotel> hotelAtDestinationCityNonAc(String city) {
-		return hd.findByHotelCityAndisAcFalse(city);
+		return hd.findByHotelCityAndIsAcFalse(city);
 	}
 
 }

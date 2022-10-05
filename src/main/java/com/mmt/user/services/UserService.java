@@ -43,7 +43,7 @@ public class UserService implements UserServiceInterface{
 
 	@Override
 	public boolean userLogin(User user) {
-		return ud.findByUserEmailIdAndPassword(user.getEmailId(), user.getPassword());
+		return ud.findByEmailIdAndPassword(user.getEmailId(), user.getPassword());
 	}
 
 	@Override

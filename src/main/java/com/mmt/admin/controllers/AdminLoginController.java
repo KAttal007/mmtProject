@@ -19,7 +19,7 @@ public class AdminLoginController {
 	
 	@RequestMapping("adminLogin" )//adminLoginForm -- jsp
 	public String adminLogin(Admin admin , Model m) {
-		if(as.login(admin)) return "adminHome";
+		if(as.login(admin)) return "adminHomePage";
 		m.addAttribute("message" , "wrong username or password");
 		return "adminLoginForm";
 	}

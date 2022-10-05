@@ -16,11 +16,6 @@ import com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator;
 public class Admin {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "admin_seq")
-	@GenericGenerator(name = "admin_seq", strategy = "com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator", parameters = {
-			@Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
-			@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "Admin_"),
-			@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
 	private String adminId;
 	private String firstName;
 	private String lastName;

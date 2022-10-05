@@ -15,7 +15,7 @@ public class EditDeleteHotelController {
 	
 	@RequestMapping("updateHotel") //-- updateHotelPage
 	public String updateHotel(Hotel hotel) {
-		as.updateHoetl(hotel);
+		as.updateHotel(hotel);
 		return "updateHotelSuccessfully";
 	}
 	
