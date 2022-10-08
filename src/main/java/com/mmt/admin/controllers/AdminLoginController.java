@@ -12,15 +12,16 @@ import com.mmt.admin.services.AdminServiceInterface;
 public class AdminLoginController {
 	@Autowired
 	private AdminServiceInterface as;
-	@RequestMapping("adminlogin")
-	public String getAdminLogin() {
-		return "adminLoginForm";
-	}
 	
 	@RequestMapping("adminLogin" )//adminLoginForm -- jsp
 	public String adminLogin(Admin admin , Model m) {
-		if(as.login(admin)) return "adminHomePage";
+		if(as.login(admin)) return "adminHome";
 		m.addAttribute("message" , "wrong username or password");
 		return "adminLoginForm";
+	}
+	
+	@RequestMapping("goAddHotel")
+	public String addHotelNav() {
+		return "addHotelPage";
 	}
 }

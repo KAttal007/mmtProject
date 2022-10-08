@@ -15,7 +15,6 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
-import com.mmt.address.Address;
 import com.mmt.bookedFlight.model.BookedFlight;
 import com.mmt.bookedHotel.model.BookedHotel;
 import com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator;
@@ -46,21 +45,12 @@ public class User {
 	private String emailId;
 	@NotEmpty
 	private String password;
-	@OneToOne(mappedBy = "userd")
-	private Address address;
+	
 	@OneToMany(mappedBy = "user")
 	private List<BookedHotel> hotelBooking = new ArrayList<>();
 	@OneToMany(mappedBy = "user")
 	private List<BookedFlight> flightBooking = new ArrayList<>();
-	//sample comment
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
+	
 	public String getUserId() {
 		return userId;
 	}

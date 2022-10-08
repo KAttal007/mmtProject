@@ -4,11 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import com.mmt.bookedHotel.model.BookedHotel;
 import com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator;
 
 @Entity
@@ -31,6 +33,9 @@ public class Hotel {
 	private int noOfAvilableAcRoom;
 	private int noOfAvilableNonAcRoom;
 	private Boolean isAc;
+	
+	@OneToOne(mappedBy="hotel")
+	private BookedHotel bookedhotel;
 
 	public Boolean getIsAc() {
 		return isAc;

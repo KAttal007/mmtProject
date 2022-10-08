@@ -22,6 +22,6 @@ public class ViewFlightsController {
 	public String sourceToDestinationFlight(@RequestParam("source")String source , @RequestParam("destination")String destination,Model m) {
 		List<Flight> list = fs.flightFromStartCityToDestinationCityInOrder(source, destination); 
 		m.addAttribute("flightList" , list);
-		return "viewAllSourceToDestinationFlight";
+		return "resultFlightPage";
 	}
 }

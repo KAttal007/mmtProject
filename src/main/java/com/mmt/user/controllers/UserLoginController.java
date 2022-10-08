@@ -18,11 +18,12 @@ public class UserLoginController {
 	@RequestMapping("userLogin")
 	public String userLogin(User user , HttpSession session  ,Model m) {
 		if(us.userLogin(user)) {
-			session.setAttribute("userId", user.getUserId());
+			String userId = us.userName(user.getEmailId(), user.getPassword());
+			session.setAttribute("userId", userId);
 			return "userHome";
 		}
 		m.addAttribute("message" , "wrong userName or Password");
-		return "userLoingPage";
+		return "userLoginPage";
 	}
 	
 	@RequestMapping("userLogout")
@@ -30,5 +31,5 @@ public class UserLoginController {
 		session.removeAttribute("userId");
 		return "userLoginPage";
 	}
-
 }
+

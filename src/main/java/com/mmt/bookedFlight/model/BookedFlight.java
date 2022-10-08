@@ -1,11 +1,13 @@
 package com.mmt.bookedFlight.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -28,7 +30,7 @@ public class BookedFlight {
 	private int noOfSeats;
 	private int price;
 	//@JoinColumn(name = "flightid")
-	@ManyToOne
+	@OneToOne(cascade = {CascadeType.ALL})
 	private Flight flight;
 	//@JoinColumn(name = "userid")
 	@ManyToOne

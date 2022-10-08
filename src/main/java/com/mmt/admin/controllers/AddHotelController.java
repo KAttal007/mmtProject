@@ -13,16 +13,12 @@ public class AddHotelController {
 	@Autowired
 	private AdminServiceInterface as;
 	
-	@RequestMapping("goAddHotel")
-	public String goAddHotel()
-	{
+	@RequestMapping("addHotel") // -- addHotelPage
+	public String addHotel(Hotel hotel , Model m) {
+		as.addHotel(hotel);
+		m.addAttribute("message","hotel Added Successfully");
 		return "addHotelPage";
 	}
 	
-	@RequestMapping("addHotel") // -- addHotelPage
-	public String addHotel(Hotel hotel, Model m) {
-		as.addHotel(hotel);
-		m.addAttribute("message", "Hotel Added Successfully");
-		return "addHotelPage";
-	}
+	
 }

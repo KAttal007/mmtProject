@@ -1,6 +1,7 @@
 package com.mmt.bookedHotel.model;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,7 +35,7 @@ public class BookedHotel {
 	private boolean isAc;
 	private float price;
 	private String type;
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})
 	private Hotel hotel;
 	@ManyToOne
 	private User user;

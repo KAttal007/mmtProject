@@ -17,13 +17,13 @@ public class ViewUserDetailsController {
 	private UserServiceInterface us;
 	
 	@RequestMapping("printUserDetails")
-	public String printUserDetails(HttpSession session, Model m)
-	{
+	public String printUserDetails(HttpSession session , Model m) {
 		String userId = (String) session.getAttribute("userId");
-		if(userId==null)
+		if(userId==null) {
 			return "userLoginPage";
+		}
 		User user = us.viewUser(userId);
-		m.addAttribute("user",user);
+		m.addAttribute("user", user);
 		return "userDetails";
 	}
 }

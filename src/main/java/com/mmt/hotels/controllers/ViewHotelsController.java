@@ -21,6 +21,6 @@ public class ViewHotelsController {
 	@RequestMapping("viewHotelAtDestination") //-- viewHotelpage
 	public String viewHotelAtDestination(@RequestParam("destination")String destination,Model m) {
 		m.addAttribute("hotelList" ,hs.hotelAtDestinationCity(destination) );
-		return "hotelView";
+		return "resultHotelPage";
 	}
 }

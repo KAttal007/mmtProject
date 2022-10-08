@@ -10,19 +10,13 @@ import com.mmt.flights.model.Flight;
 
 @Controller
 public class AddFlightController {
-	@Autowired
-	private AdminServiceInterface as;
-	
-	@RequestMapping("goAddFlights")
-	public String goAddFlight()
-	{
-		return "addFlightPage";
-	}
-	
-	@RequestMapping("addFlight") // -- addFFlightPage
-	public String addHotel(Flight flight, Model m) {
-		as.addFlight(flight);
-		m.addAttribute("message", "Flight added succesfully");
-		return "addFlightPage";
-	}
+    @Autowired
+    private AdminServiceInterface as;
+
+    @RequestMapping("addFlight") // -- addFFlightPage
+    public String addFlight(Flight flight , Model m) {
+        as.addFlight(flight);
+        m.addAttribute("message" , "Flight added");
+        return "addFlightPage";
+    }
 }

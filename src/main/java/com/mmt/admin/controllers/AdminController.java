@@ -5,11 +5,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AdminController {
-	
-	@RequestMapping("adminHomePage")
-	public String getadminHomePage() {
-		return "adminHomePage";
+	@RequestMapping("adminLoginNav")
+	public String adminLogin() {
+		return "adminLoginForm";
 	}
 	
-
+	@RequestMapping("adminHomePage")
+	public String adminHomePage() {
+		return "adminHome";
+	}
+	
+	@RequestMapping("goAddFlights")
+	public String goAddFlights() {
+		return "addFlightPage";
+	}
+	
+	@RequestMapping("goRemoveHotel")
+	public String goRemoveHotel() {
+		return "removeHotelPage";
+	}
+	
+	@RequestMapping("goRemoveFlight")
+	public String goRemoveFlight() {
+		return "removeFlightPage";
+	}
 }

@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -70,14 +71,14 @@ public class Flight {
 		this.noOfSeats = noOfSeats;
 	}
 
-	@OneToMany(mappedBy = "flight")
-	private List<BookedFlight> bookedflights;
+	@OneToOne(mappedBy = "flight")
+	private BookedFlight bookedflights;
 
-	public List<BookedFlight> getBookedflights() {
+	public BookedFlight getBookedflights() {
 		return bookedflights;
 	}
 
-	public void setBookedflights(List<BookedFlight> bookedflights) {
+	public void setBookedflights(BookedFlight bookedflights) {
 		this.bookedflights = bookedflights;
 	}
 

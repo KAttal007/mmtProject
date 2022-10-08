@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +17,7 @@
 <!--   <a href="updateUserDetails">Update Profile</a> -->
 <!--   <a href="viewUserAddress">View Address</a> -->
 <!--   <a href="addAddressToUser">Add Address</a> -->
-  <a href="deleteUserByUser">Delete Account</a>
+   <a href="deleteUserByUser">Delete Account</a>
   </div>
   </div>
   <div class="dropdown">
@@ -42,14 +44,6 @@
   <p class="dropbtn">Help</p>
   <div class="dropdown-content">
   <a href="View Profile">Contact Us</a>
-  
-  </div>
-  </div>
-   <div class="dropdown">
-  <p class="dropbtn">Admin Login</p>
-  <div class="dropdown-content">
-  <a href="adminLoginNav">Login</a>
-  
   </div>
   </div>
   </nav>
