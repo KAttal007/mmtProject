@@ -16,7 +16,7 @@
       <h1>Login</h1>
       <form action="userLogin">
         <label>EmailID</label>
-        <input type="text" name="mailID"placeholder="" />
+        <input type="text" name="EmailId"placeholder="" />
         <label>Password</label>
         <input type="password" name="password"placeholder="" />
         <input type="submit" value="Submit" />

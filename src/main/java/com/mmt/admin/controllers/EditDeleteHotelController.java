@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mmt.admin.service.AdminServiceInterface;
+import com.mmt.admin.services.AdminServiceInterface;
 import com.mmt.hotels.model.Hotel;
 
 @Controller

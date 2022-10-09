@@ -1,87 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
-    
-    
-    
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Responsive Payment getway form design in Hindi</title>
-	<link rel="stylesheet" type="text/css" href="/css/payment.css">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
 </head>
 <body>
-<header>
-	<div class="container">
-		<div class="left">
-			<h3>BILLING ADDRESS</h3>
-			<form>
-				Full name
-				<input type="text" name="" placeholder="Enter name">
-				Email
-				<input type="text" name="" placeholder="Enter email">
+<form action = "">
+<table style="width:30%">
 
-				Address
-				<input type="text" name="" placeholder="Enter address">
-				
-				City
-				<input type="text" name="" placeholder="Enter City">
-				<div id="zip">
-					<label>
-						State
-						<select>
-							<option>Choose State..</option>
-							<option>Rajasthan</option>
-							<option>Hariyana</option>
-							<option>Uttar Pradesh</option>
-							<option>Madhya Pradesh</option>
-						</select>
-					</label>
-						<label>
-						Zip code
-						<input type="number" name="" placeholder="Zip code">
-					</label>
-				</div>
-			</form>
-		</div>
-		<div class="right">
-			<h3>PAYMENT</h3>
-			<form action = "bookFlight">
-				Accepted Card <br>
-				<img src="image/card1.png" width="100">
-				<img src="image/card2.png" width="50">
-				<br><br>
+<tr>
+<th> Card Number:  </th>
+<td><input type = "number" name = "cardNo"></td>
+</tr>
+<tr>
+<th> Name on Card:  </th>
+<td><input type = "text" name = "nameOnCard"></td>
+</tr>
+<tr>
+<th> Expiry Month:  </th>
+<td><input type = "number" name = "expMonth"></td>
+</tr>
+<tr>
+<th> Expiry Year:  </th>
+<td><input type = "number" name = "expYear"></td>
+</tr>
+<tr>
+<th> CVV:  </th>
+<td><input type = "number" name = "cvv"></td>
+</tr><tr>
+<th> Number of Seats:  </th> <!-- noOfSeats -->
+<td></td>
+</tr>
+<tr>
+<th> Price Overall:  </th> <!-- price -->
+<td></td>
+</tr>
+</table>
 
-				Credit card number
-			<input type="text" name="" placeholder="Enter card number">
-				
-				Exp month
-				<input type="text" name="" placeholder="Enter Month">
-				<div id="zip">
-					<label>
-						Exp year
-						<select>
-							<option>Choose Year..</option>
-							<option>2022</option>
-							<option>2023</option>
-							<option>2024</option>
-							<option>2025</option>
-						</select>
-					</label>
-						<label>
-						CVV
-						<input type="number" name="" placeholder="CVV">
-					</label>
-				</div>
-				<input type="hidden" value="${flightId}" name ="flightId">
-				<input type="hidden" value="${noOfSeats}" name ="noOfSeats">
-				<input type="submit" name="" value="Proceed to Checkout">
-			</form>
-			
-		</div>
-	</div>
-</header>
+
+
+</form>
+
 </body>
 </html>

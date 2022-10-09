@@ -55,7 +55,7 @@
     </tr>
     <tr>
     <th>Email</th>
-    <td>${user.mailID}</td>
+    <td>${user.emailId}</td>
     </tr>
     <tr>
     <th>Password</th>

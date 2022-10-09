@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mmt.hotels.service.HotelServiceInterface;
+import com.mmt.hotels.services.HotelServiceInterface;
 
 @Controller
 public class BookHotelsController {
@@ -21,7 +21,7 @@ public class BookHotelsController {
 		String userId = (String) session.getAttribute("userId");
 		if(userId==null) return "userLogin";
 		hs.bookHotel(hotelId,userId, noOfRooms, isAc);
-		return "userHome";
+		return "bookHotelSuccessfully";
 	}
 }
 

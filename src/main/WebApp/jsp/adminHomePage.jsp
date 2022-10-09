@@ -7,11 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<a href = "goAddHotel">go to add hotel page</a>
+<a href = "goAddFlights">go to add flight page</a>
+<a href = "goRemoveHotel">go to remove hotel page</a>
+<a href = "goRemoveFlight">go to remove flight page</a>
 
-<form action="viewFlightSourceToDestination">
-Enter Source city : <input type = "text" name ="source"><br>
-Enter Destination city : <input type = "text" name ="destination"><br>
-<input type="submit" >
-</form>
 </body>
 </html>

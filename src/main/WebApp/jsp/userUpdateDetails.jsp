@@ -20,7 +20,7 @@
 <label>Mobile Number</label>
 <input type="text" name="mobileNumber" placeholder=""/>
 <label>MailId</label>
-<input type="text" name="mailID" placeholder=""/>
+<input type="text" name="emailId" placeholder=""/>
 <label>Password</label>
 <input type="text" name="password" placeholder=""/>
 <div>                     </div>
