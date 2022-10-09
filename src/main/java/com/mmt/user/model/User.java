@@ -9,18 +9,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 import javax.persistence.Table;
+
+import javax.validation.constraints.*;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+
 import com.mmt.bookedFlight.model.BookedFlight;
 import com.mmt.bookedHotel.model.BookedHotel;
 import com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "userdetails")
@@ -32,100 +32,88 @@ public class User {
 			@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "User_"),
 			@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
 	private String userId;
-	@NotEmpty
+	@NotEmpty(message = "First Name is mandatory")
 	private String firstName;
-	@NotEmpty
+	@NotEmpty(message = "Middle Name is mandatory")
 	private String middleName;
-	@NotEmpty
+	@NotEmpty(message = "Last Name is mandatory")
 	private String lastName;
-	@NotEmpty
+	@Pattern(regexp="((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}")
+	@NotEmpty(message = "Phone Number is Mandatory")
 	private String mobileNumber;
+	@Email(message = "Email is mandatory, and please enter a correctly formatted email.")
 	@NotEmpty
-	@Email
-	private String emailId;
-	@NotEmpty
+	private String mailId;
+	@Pattern(regexp="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
+	@NotEmpty(message = "Password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character")
 	private String password;
-	
+//	@OneToOne(mappedBy = "userd")
+//	private Address address;
 	@OneToMany(mappedBy = "user")
 	private List<BookedHotel> hotelBooking = new ArrayList<>();
 	@OneToMany(mappedBy = "user")
 	private List<BookedFlight> flightBooking = new ArrayList<>();
-	
+	//sample comment
+//	public Address getAddress() {
+//		return address;
+//	}
+//
+//	public void setAddress(Address address) {
+//		this.address = address;
+//	}
 	public String getUserId() {
 		return userId;
 	}
-
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-
 	public String getFirstName() {
 		return firstName;
 	}
-
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
 	public String getMiddleName() {
 		return middleName;
 	}
-
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
-
 	public String getLastName() {
 		return lastName;
 	}
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-	
-	public String getEmailId() {
-		return emailId;
-	}
-
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public String getMobileNumber() {
 		return mobileNumber;
 	}
-
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
-
-	public List<BookedHotel> getHotel() {
+	public String getEmailId() {
+		return mailID;
+	}
+	public void setEmailId(String EmailId) {
+		this.EmailId = EmailId;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public List<BookedHotel> getHotelBooking() {
 		return hotelBooking;
 	}
-
-	public void setHotel(List<BookedHotel> hotel) {
-		this.hotelBooking = hotel;
+	public void setHotelBooking(List<BookedHotel> hotelBooking) {
+		this.hotelBooking = hotelBooking;
 	}
-
-	public List<BookedFlight> getFlight() {
+	public List<BookedFlight> getFlightBooking() {
 		return flightBooking;
 	}
-
-	public void setFlight(List<BookedFlight> flight) {
-		this.flightBooking = flight;
+	public void setFlightBooking(List<BookedFlight> flightBooking) {
+		this.flightBooking = flightBooking;
 	}
-
-	
-
-	
 	
 }

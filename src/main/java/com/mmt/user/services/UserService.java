@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+
+
 import com.mmt.bookedFlight.dao.BookedFlightDao;
 import com.mmt.bookedFlight.model.BookedFlight;
 import com.mmt.bookedHotel.dao.BookedHotelDao;
 import com.mmt.bookedHotel.model.BookedHotel;
-
 import com.mmt.user.dao.UserDao;
 import com.mmt.user.model.User;
 
@@ -38,7 +40,7 @@ public class UserService implements UserServiceInterface{
 
 	@Override
 	public boolean userLogin(User user) {
-		User existUser= ud.findByEmailIdAndPassword(user.getEmailId(), user.getPassword());
+		User existUser= ud.findByMailIDAndPassword(user.getMailID(), user.getPassword());
 		if(existUser==null) return false;
 		return true;
 	}
@@ -50,7 +52,7 @@ public class UserService implements UserServiceInterface{
 	}
 
 	@Override
-	public boolean deleteUser(String userId, String password) {
+	public boolean deleteUser(String userId , String password) {
 		User existUser= ud.findByUserIdAndPassword(userId, password);
 		if(existUser==null) return false;
 			ud.deleteById(userId);
@@ -58,23 +60,23 @@ public class UserService implements UserServiceInterface{
 	}
 
 	@Override
-	public boolean updateUser(User user, String userId) {
+	public boolean updateUser(User user , String userId) {
 	
-		User existUser = ud.findById(user.getUserId()).get();
+		User existUser = ud.findById(userId).get();
 		if(user.getMobileNumber() != null) {
 			existUser.setMobileNumber(user.getMobileNumber());
 		}
-		/*
-		 * if(user.getAddress()!=null) { existUser.setAddress(user.getAddress()); }
-		 */
+//		if(user.getAddress()!=null) {
+//			existUser.setAddress(user.getAddress());
+//		}
 		if(user.getFirstName()!=null) {
 			existUser.setFirstName(user.getFirstName());
 		}
 		if(user.getLastName()!=null) {
 			existUser.setLastName(user.getLastName());
 		}
-		if(user.getEmailId()!=null) {
-			existUser.setEmailId(user.getEmailId());
+		if(user.getMailID()!=null) {
+			existUser.setMailID(user.getMailID());
 		}
 		if(user.getMiddleName()!=null) {
 			existUser.setMiddleName(user.getMiddleName());
@@ -131,28 +133,16 @@ public class UserService implements UserServiceInterface{
 		User user = ud.findById(userId).get();
 		return bfd.findByUser(user);
 	}
-
-	/*
-	 * @Override public boolean updateUserAddress(Address address, String userId) {
-	 * User user = ud.findById(userId).get(); Address oldAddress =
-	 * user.getAddress(); if(address.getArea()!=null)
-	 * oldAddress.setArea(address.getArea()); if(address.getCity()!=null)
-	 * oldAddress.setCity(address.getCity());
-	 * if(address.getCountry()!=null)oldAddress.setCountry(address.getCountry());
-	 * if(address.getHouseNo()!=null) oldAddress.setHouseNo(address.getHouseNo());
-	 * if(address.getPinCode()==0) oldAddress.setPinCode(address.getPinCode());
-	 * if(address.getState()!=null) oldAddress.setState(address.getState());
-	 * if(address.getStreetName()!=null)
-	 * oldAddress.setStreetName(address.getStreetName());
-	 * user.setAddress(oldAddress); ud.save(user); ad.save(oldAddress); return
-	 * false; }
-	 */
+	
+	
 
 	@Override
 	public String userName(String email, String password) {
-		User user = ud.findByEmailIdAndPassword(email, password);
+		User user = ud.findByMailIDAndPassword(email, password);
 		return user.getUserId();
 	}
+
+
 	
 	
 

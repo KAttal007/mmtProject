@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AdminController {
 	@RequestMapping("adminLoginNav")
 	public String adminLogin() {
-		return "adminLoginForm";
+		return "adminLoginPage";
 	}
 	
 	@RequestMapping("adminHomePage")

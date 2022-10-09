@@ -18,7 +18,7 @@ public class UserLoginController {
 	@RequestMapping("userLogin")
 	public String userLogin(User user , HttpSession session  ,Model m) {
 		if(us.userLogin(user)) {
-			String userId = us.userName(user.getEmailId(), user.getPassword());
+			String userId = us.userName(user.getMailID(), user.getPassword());
 			session.setAttribute("userId", userId);
 			return "userHome";
 		}
@@ -29,7 +29,6 @@ public class UserLoginController {
 	@RequestMapping("userLogout")
 	public String userLogot(HttpSession session ) {
 		session.removeAttribute("userId");
-		return "userLoginPage";
+		return "userHome";
 	}
 }
-

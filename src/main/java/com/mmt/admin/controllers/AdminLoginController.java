@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mmt.admin.model.Admin;
-import com.mmt.admin.services.AdminServiceInterface;
+import com.mmt.admin.service.AdminServiceInterface;
 
 @Controller
 public class AdminLoginController {

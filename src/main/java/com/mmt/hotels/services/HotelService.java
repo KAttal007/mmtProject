@@ -1,6 +1,8 @@
 package com.mmt.hotels.services;
 
+
 import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +15,8 @@ import com.mmt.user.dao.UserDao;
 import com.mmt.user.model.User;
 
 @Service
-public class HotelService implements HotelServiceInterface{
+public class HotelService implements HotelServiceInterface {
+	
 	@Autowired
 	private HotelDao hd;
 	
@@ -58,12 +61,14 @@ public class HotelService implements HotelServiceInterface{
 			book.setAc(false);
 			price = noOfRooms * hotel.getPriceNonAcRoom();
 		}
+		book.setUser(user);
+		book.setNoOfRooms(noOfRooms);
 		book.setHotel(hotel);
 		book.setPrice(price);
 		book.setType("booked");
 		bd.save(book);
 		hd.save(hotel);
-		List<BookedHotel> bookHotel = user.getHotel();
+		List<BookedHotel> bookHotel = user.getHotelBooking();
 		bookHotel.add(book);
 		ud.save(user);
 		return true;
@@ -86,7 +91,7 @@ public class HotelService implements HotelServiceInterface{
 		book.setType("canceled");
 		bd.save(book);
 		hd.save(hotel);
-		List<BookedHotel> bookHotellist = user.getHotel();
+		List<BookedHotel> bookHotellist = user.getHotelBooking();
 		bookHotellist.add(book);
 		ud.save(user);
 		return false;
@@ -110,6 +115,20 @@ public class HotelService implements HotelServiceInterface{
 	@Override
 	public List<Hotel> hotelAtDestinationCityNonAc(String city) {
 		return hd.findByHotelCityAndIsAcFalse(city);
+	}
+
+	@Override
+	public boolean isRoomAvilable(String hotelId, int noOfRooms, boolean isAc) {
+		// TODO Auto-generated method stub
+		Hotel hotel = hd.findById(hotelId).get();
+		if(isAc) {
+			if(hotel.getNoOfAvilableAcRoom() < noOfRooms) return false;
+			return true;
+		}else if(!isAc) {
+			if(hotel.getNoOfNonAcRooms() < noOfRooms) return false;
+			return true;
+		}
+		return false;
 	}
 
 }

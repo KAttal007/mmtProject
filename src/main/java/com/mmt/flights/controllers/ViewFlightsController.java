@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mmt.flights.model.Flight;
 import com.mmt.flights.services.FlightServiceInterface;
-
 @Controller
 public class ViewFlightsController {
 	
@@ -23,5 +22,12 @@ public class ViewFlightsController {
 		List<Flight> list = fs.flightFromStartCityToDestinationCityInOrder(source, destination); 
 		m.addAttribute("flightList" , list);
 		return "resultFlightPage";
+	}
+	
+	@RequestMapping("checkFlight")
+	public String checkFlight(@RequestParam("flightId")String flightId , Model m) {
+		Flight flight = fs.viewFlightDetails(flightId);
+		m.addAttribute("flight" , flight);
+		return "bookFlightPage";
 	}
 }

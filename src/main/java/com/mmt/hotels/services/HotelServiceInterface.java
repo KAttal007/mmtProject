@@ -13,4 +13,5 @@ public interface HotelServiceInterface {
 	public Hotel viewHotel(String hotelId);
 	public int noOfRoomsAvilable(String hotelId , boolean isAc);
 	public List<Hotel> hotelAtDestinationCityNonAc(String city);
+	public boolean isRoomAvilable(String hotelId , int noOfRooms ,boolean isAc );
 }

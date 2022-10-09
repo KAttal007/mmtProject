@@ -14,4 +14,5 @@ public class FlightsNavigationController {
 	public String goUpdateFlight() {
 		return "updateFlightPage";
 	}
+	
 }

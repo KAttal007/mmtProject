@@ -21,7 +21,8 @@ public class BookHotelsController {
 		String userId = (String) session.getAttribute("userId");
 		if(userId==null) return "userLogin";
 		hs.bookHotel(hotelId,userId, noOfRooms, isAc);
-		return "bookHotelSuccessfully";
+		return "userHome";
 	}
+	
+	
 }
-

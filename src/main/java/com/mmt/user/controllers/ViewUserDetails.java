@@ -11,8 +11,7 @@ import com.mmt.user.model.User;
 import com.mmt.user.services.UserServiceInterface;
 
 @Controller
-public class ViewUserDetailsController {
-
+public class ViewUserDetails {
 	@Autowired
 	private UserServiceInterface us;
 	
@@ -26,4 +25,15 @@ public class ViewUserDetailsController {
 		m.addAttribute("user", user);
 		return "userDetails";
 	}
+	
+//	@RequestMapping("viewUserAddress")
+//	public String viewUserAddress(HttpSession session , Model m) {
+//		String userId = (String) session.getAttribute("userId");
+//		if(userId==null) {
+//			return "userLoginPage";
+//		}
+//		Address address = us.viewAddress(userId);
+//		m.addAttribute("address", address);
+//		return "userAddressDetails";
+//	}
 }

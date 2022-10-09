@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class UserNavigationsController {
+	
 	@RequestMapping("updateUserDetailsPage")
 	public String updateUserDetailsPage() {
 		return "userUpdateDetails";
@@ -19,5 +20,14 @@ public class UserNavigationsController {
 	public String userLoginNav() {
 		return "userLoginPage";
 	}
-
+	
+//	@RequestMapping("updateUserAddressPage")
+//	public String updateUserAddressPage() {
+//		return "userUpdateAddress";
+//	}
+//	
+//	@RequestMapping("addAddressToUser")
+//	public String addAddressToUser() {
+//		return "addAddressUser";
+//	}
 }

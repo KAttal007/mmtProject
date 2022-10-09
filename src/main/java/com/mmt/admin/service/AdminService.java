@@ -1,4 +1,4 @@
-package com.mmt.admin.services;
+package com.mmt.admin.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,8 @@ import com.mmt.hotels.model.Hotel;
 import com.mmt.user.dao.UserDao;
 
 @Service
-public class AdminService implements AdminServiceInterface{
+
+public class AdminService implements AdminServiceInterface {
 	@Autowired
 	private AdminDao ad;
 	
@@ -68,7 +69,7 @@ public class AdminService implements AdminServiceInterface{
 	}
 
 	@Override
-	public boolean updateHotel(Hotel hotel) {
+	public boolean updateHoetl(Hotel hotel) {
 		Hotel existHotel = hd.findById(hotel.getHotelId()).get();
 		if(existHotel==null) return false;
 		if(hotel.getHotelBrand()!=null) existHotel.setHotelBrand(hotel.getHotelBrand());

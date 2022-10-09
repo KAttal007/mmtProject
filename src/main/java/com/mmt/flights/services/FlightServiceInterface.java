@@ -5,7 +5,7 @@ package com.mmt.flights.services;
 import java.util.List;
 
 import com.mmt.flights.model.Flight;
-import com.mmt.user.model.User;
+import com.mmt.payment.CardDetails;
 
 public interface FlightServiceInterface {
 	public List<Flight> flight();
@@ -15,5 +15,17 @@ public interface FlightServiceInterface {
 	public boolean isSeatsAvilable(String flightId , int noOfSeats);
 	public boolean cancelFlight(String bookingId);
 	public Flight viewFlightDetails(String flight);
-	
+	public boolean isPaymentDoneFlight(CardDetails cd);
+	public float flightPrice(String flightId , int noOfSeats);
+	//insert
+	//genrate duration
+	//genrate air tag
+	//delete by tag
+	//print by tagflight
+	//print all flight
+	//price per seat
+	//bookFlight
+	//serch from start to destination
+	//is seat avilable
+	//is paymentdone
 }
