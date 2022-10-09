@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mmt.flights.model.Flight;
-import com.mmt.flights.services.FlightServiceInterface;
+import com.mmt.flights.service.FlightServiceInterface;
 
 @Controller
 public class ViewFlightsController {

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mmt.hotels.services.HotelServiceInterface;
+import com.mmt.hotels.service.HotelServiceInterface;
 
 @Controller
 public class CancelHotelsController {

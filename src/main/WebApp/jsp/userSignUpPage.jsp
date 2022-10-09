@@ -23,7 +23,7 @@
         <label>Last Name</label>
         <input type="text" name="lastName" placeholder="" />
         <label>Email</label>
-        <input type="email" name="EmailId"placeholder="" />
+        <input type="email" name="mailID"placeholder="" />
         <label>MobileNumber</label>
         <input type="text" name="mobileNumber"placeholder="" />
         <label>Password</label>

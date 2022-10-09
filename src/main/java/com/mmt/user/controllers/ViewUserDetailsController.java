@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mmt.user.model.User;
-import com.mmt.user.services.UserServiceInterface;
+import com.mmt.user.service.UserServiceInterface;
 
 @Controller
 public class ViewUserDetailsController {

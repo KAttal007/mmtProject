@@ -4,12 +4,18 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Search Hotel</title>
+
+  <link rel="stylesheet" href="css/hotelSearch.css">
 </head>
 <body>
-<form action="viewHotelAtDestination">
-Enter city : <input type = "text" name ="destination"><br>
-<input type="submit" >
+
+<form action="viewHotelAtDestination" class="search-bar">
+  <input type="search" name="search" placeholder ="Enter City to Search" pattern=".*\S.*" required>
+  <button class="search-btn" type="submit">
+    <span>Search</span>
+  </button>
 </form>
+
 </body>
 </html>

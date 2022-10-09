@@ -20,7 +20,9 @@ import com.mmt.bookedHotel.model.BookedHotel;
 import com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "userdetails")
@@ -32,18 +34,20 @@ public class User {
 			@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "User_"),
 			@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
 	private String userId;
-	@NotEmpty
+	@NotEmpty(message = "First Name is mandatory")
 	private String firstName;
-	@NotEmpty
+	@NotEmpty(message = "Middle Name is mandatory")
 	private String middleName;
-	@NotEmpty
+	@NotEmpty(message = "Last Name is mandatory")
 	private String lastName;
-	@NotEmpty
+	@Pattern(regexp="/((\\\\+)((0[ -]*)*|((91 )*))((\\\\d{12})+|(\\\\d{10})+))|\\\\d{5}([- ]*)\\\\d{6}/gm")
+	@NotEmpty(message = "Phone Number is Mandatory")
 	private String mobileNumber;
+	@Email(message = "Email is mandatory, and please enter a correctly formatted email.")
 	@NotEmpty
-	@Email
 	private String emailId;
-	@NotEmpty
+	@Pattern(regexp="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
+	@NotEmpty(message = "Password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character")
 	private String password;
 	
 	@OneToMany(mappedBy = "user")
@@ -108,24 +112,21 @@ public class User {
 		this.mobileNumber = mobileNumber;
 	}
 
-	public List<BookedHotel> getHotel() {
+	public List<BookedHotel> getHotelBooking() {
 		return hotelBooking;
 	}
 
-	public void setHotel(List<BookedHotel> hotel) {
-		this.hotelBooking = hotel;
+	public void setHotelBooking(List<BookedHotel> hotelBooking) {
+		this.hotelBooking = hotelBooking;
 	}
 
-	public List<BookedFlight> getFlight() {
+	public List<BookedFlight> getFlightBooking() {
 		return flightBooking;
 	}
 
-	public void setFlight(List<BookedFlight> flight) {
-		this.flightBooking = flight;
+	public void setFlightBooking(List<BookedFlight> flightBooking) {
+		this.flightBooking = flightBooking;
 	}
-
-	
-
 	
 	
 }

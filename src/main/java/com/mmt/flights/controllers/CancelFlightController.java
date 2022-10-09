@@ -3,7 +3,7 @@ package com.mmt.flights.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.mmt.flights.services.FlightService;
+import com.mmt.flights.service.FlightService;
 @Controller
 public class CancelFlightController {
 	@Autowired

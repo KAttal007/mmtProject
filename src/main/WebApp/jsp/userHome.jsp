@@ -14,6 +14,7 @@
   <p class="dropbtn">Profile</p>
   <div class="dropdown-content">
   <a href="printUserDetails">View Profile</a>
+  <a href="userLogout">logout</a>
 <!--   <a href="updateUserDetails">Update Profile</a> -->
 <!--   <a href="viewUserAddress">View Address</a> -->
 <!--   <a href="addAddressToUser">Add Address</a> -->
@@ -24,14 +25,14 @@
   <p class="dropbtn">Hotels</p>
   <div class="dropdown-content">
   <a href="searchHotels" >Search Hotels</a>
-  <a href="Update Profile">My Hotel Bookings</a>
+  <a href="viewMyHotelBooking">My Hotel Bookings</a>
   </div>
   </div>
   <div class="dropdown">
   <p class="dropbtn">Flights</p>
   <div class="dropdown-content">
   <a href="searchFlight">Search Flights</a>
-  <a href="Update Profile">My Flights Bookings</a>
+  <a href="viewMyFlightBooking">My Flights Bookings</a>
   </div>
   </div>
   <div class="dropdown">

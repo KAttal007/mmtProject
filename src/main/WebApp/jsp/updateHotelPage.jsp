@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Make My Trip - Admin Update Hotels</title>
+<title>Make My Trip - Admin Add Hotels</title>
 </head>
 <body>
 

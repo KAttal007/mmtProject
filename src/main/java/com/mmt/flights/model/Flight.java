@@ -1,14 +1,12 @@
 package com.mmt.flights.model;
-
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.*;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -26,26 +24,39 @@ public class Flight {
 			@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "Flight_"),
 			@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
 	private String flightId;
+	@NotBlank(message = "Airline Name must not be empty!")
 	private String airlineName;
-	//private String airlineTag;
+	@NotBlank(message = "Airline Number must not be empty!")
 	private String flightNumber;
+	@NotBlank(message = "Airline Duration (Time) must not be empty!")
 	private String flightDuration;
+	@NotBlank(message = "Airline Departure (Time) must not be empty!")
 	private String flightDeparture; // time
+	@NotBlank(message = "Airline Arrival (Time) must not be empty!")
 	private String flightArrival; // time
+	@NotBlank(message = "Airline Source (City) must not be empty!")
 	private String flightSource;
+	@NotBlank(message = "Airline Destination (City) must not be empty!")
 	private String flightDestination;
-	
+	@NotBlank(message = "Price Per Seat must not be empty")
 	private int pricePerSeat;
+	@NotBlank(message = "No. Of Available Seats must not be empty")
+	@Size(max = 180, message = "Number of seats should not be more than 180")
 	private int noOfAvilableSeats;
+	@NotBlank(message = "No. Of Seats must not be empty")
+	@Size(max = 180, message = "Number of seats should not be more than 180")
 	private int noOfSeats;
 
-	
-	/*
-	 * public String getAirlineTag() { return airlineTag; }
-	 * 
-	 * public void setAirlineTag(String airlineTag) { this.airlineTag = airlineTag;
-	 * }
-	 */
+	@OneToOne(mappedBy = "flight")
+	private BookedFlight bookedflights;
+
+	public BookedFlight getBookedflights() {
+		return bookedflights;
+	}
+
+	public void setBookedflights(BookedFlight bookedflights) {
+		this.bookedflights = bookedflights;
+	}
 
 	public int getPricePerSeat() {
 		return pricePerSeat;
@@ -71,16 +82,6 @@ public class Flight {
 		this.noOfSeats = noOfSeats;
 	}
 
-	@OneToOne(mappedBy = "flight")
-	private BookedFlight bookedflights;
-
-	public BookedFlight getBookedflights() {
-		return bookedflights;
-	}
-
-	public void setBookedflights(BookedFlight bookedflights) {
-		this.bookedflights = bookedflights;
-	}
 
 	public String getFlightSource() {
 		return flightSource;
