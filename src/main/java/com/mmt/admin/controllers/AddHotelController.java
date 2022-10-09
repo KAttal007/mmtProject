@@ -1,5 +1,7 @@
 package com.mmt.admin.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +16,7 @@ public class AddHotelController {
 	private AdminServiceInterface as;
 	
 	@RequestMapping("addHotel") // -- addHotelPage
-	public String addHotel(Hotel hotel , Model m) {
+	public String addHotel(@Valid Hotel hotel , Model m) {
 		as.addHotel(hotel);
 		m.addAttribute("message","hotel Added Successfully");
 		return "addHotelPage";

@@ -38,12 +38,12 @@ public class User {
 	private String middleName;
 	@NotEmpty(message = "Last Name is mandatory")
 	private String lastName;
-	@Pattern(regexp="((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}")
+	@Pattern(regexp="^(\\+91[\\-\\s]?)?[0]?(91)?[789]\\d{9}$")
 	@NotEmpty(message = "Phone Number is Mandatory")
 	private String mobileNumber;
 	@Email(message = "Email is mandatory, and please enter a correctly formatted email.")
 	@NotEmpty
-	private String mailId;
+	private String emailId;
 	@Pattern(regexp="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
 	@NotEmpty(message = "Password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character")
 	private String password;
@@ -92,10 +92,10 @@ public class User {
 		this.mobileNumber = mobileNumber;
 	}
 	public String getEmailId() {
-		return mailID;
+		return emailId;
 	}
 	public void setEmailId(String EmailId) {
-		this.EmailId = EmailId;
+		this.emailId = EmailId;
 	}
 	public String getPassword() {
 		return password;

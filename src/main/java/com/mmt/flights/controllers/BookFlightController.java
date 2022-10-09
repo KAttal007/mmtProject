@@ -1,6 +1,7 @@
 package com.mmt.flights.controllers;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,7 @@ public class BookFlightController {
 	
 	
 	@RequestMapping("bookFlight") //-- bookFlightPage
-	public String bookFlight(Flight flight , @RequestParam("noOfSeats")int noOfSeats ,@RequestParam("flightId")String flightId ,HttpSession session,Model m) {
+	public String bookFlight(@Valid Flight flight , @RequestParam("noOfSeats")int noOfSeats ,@RequestParam("flightId")String flightId ,HttpSession session,Model m) {
 		String userId = (String) session.getAttribute("userId");
 		if(userId== null) return "userLoginPage";
 	

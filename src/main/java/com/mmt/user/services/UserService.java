@@ -40,7 +40,7 @@ public class UserService implements UserServiceInterface{
 
 	@Override
 	public boolean userLogin(User user) {
-		User existUser= ud.findByMailIDAndPassword(user.getMailID(), user.getPassword());
+		User existUser= ud.findByEmailIdAndPassword(user.getEmailId(), user.getPassword());
 		if(existUser==null) return false;
 		return true;
 	}
@@ -75,8 +75,8 @@ public class UserService implements UserServiceInterface{
 		if(user.getLastName()!=null) {
 			existUser.setLastName(user.getLastName());
 		}
-		if(user.getMailID()!=null) {
-			existUser.setMailID(user.getMailID());
+		if(user.getEmailId()!=null) {
+			existUser.setEmailId(user.getEmailId());
 		}
 		if(user.getMiddleName()!=null) {
 			existUser.setMiddleName(user.getMiddleName());
@@ -138,7 +138,7 @@ public class UserService implements UserServiceInterface{
 
 	@Override
 	public String userName(String email, String password) {
-		User user = ud.findByMailIDAndPassword(email, password);
+		User user = ud.findByEmailIdAndPassword(email, password);
 		return user.getUserId();
 	}
 

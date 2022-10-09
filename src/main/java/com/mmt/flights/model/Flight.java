@@ -40,14 +40,19 @@ public class Flight {
 	private String flightSource;
 	@NotBlank(message = "Airline Destination (City) must not be empty!")
 	private String flightDestination;
-	@NotBlank(message = "Price Per Seat must not be empty")
-	@Size(min = 2350, max = 255600)
+	@NotBlank(message = "Price Per Seat must not be empty max val = 210000, min val = 2500")
+	@Max(value = 210000)
+	@Min(value = 2500)
 	private int pricePerSeat;
 	@NotBlank(message = "No. Of Available Seats must not be empty")
-	@Size(max = 180, message = "Number of seats should not be more than 180")
+	@Size(max = 3, message = "Number of seats should not be more than 350")
+	@Max(value = 350)
+	@Min(value = 120)
 	private int noOfAvilableSeats;
 	@NotBlank(message = "No. Of Seats must not be empty")
-	@Size(max = 180, message = "Number of seats should not be more than 180")
+	@Size(max = 3, message = "Number of seats should not be more than 350 or less than 120")
+	@Max(value = 350)
+	@Min(value = 120)
 	private int noOfSeats;
 
 	@OneToMany(mappedBy = "flight")

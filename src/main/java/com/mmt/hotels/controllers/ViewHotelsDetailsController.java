@@ -1,6 +1,7 @@
 package com.mmt.hotels.controllers;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,17 +18,17 @@ public class ViewHotelsDetailsController {
 	private HotelServiceInterface hs;
 	
 	@RequestMapping("viewHotelDetails") //-- viewHotelPage
-	public String viewHotelDetails(@RequestParam("hotelId")String hoetlId , Model m) {
-		m.addAttribute("hotelDetails" , hs.viewHotel(hoetlId));
+	public String viewHotelDetails(@Valid @RequestParam("hotelId")String hotelId , Model m) {
+		m.addAttribute("hotelDetails" , hs.viewHotel(hotelId));
 		return "viewHotelPage";
 	}
 	
 	@RequestMapping("checkHotelAvailabilty")
-	public String checkHotelAvailabilty(@RequestParam("hotelId")String hoetlId ,@RequestParam("isAc")boolean isAc, @RequestParam("noOfRooms")int noOfRooms, HttpSession session,Model m) {
+	public String checkHotelAvailabilty(@Valid @RequestParam("hotelId")String hotelId ,@RequestParam("isAc")boolean isAc, @RequestParam("noOfRooms")int noOfRooms, HttpSession session,Model m) {
 		String userId = (String) session.getAttribute("userId");
 		if(userId==null) return "userLoginPage";
-		if(hs.isRoomAvilable(hoetlId, noOfRooms, isAc)){
-			m.addAttribute("hotelId" , hoetlId).addAttribute("isAc" , isAc).addAttribute("noOfRooms" , noOfRooms);
+		if(hs.isRoomAvilable(hotelId, noOfRooms, isAc)){
+			m.addAttribute("hotelId" , hotelId).addAttribute("isAc" , isAc).addAttribute("noOfRooms" , noOfRooms);
 			return "hotelPaymentPage";
 		}
 		m.addAttribute("message" , "Rooms not aviliable");

@@ -1,5 +1,7 @@
 package com.mmt.admin.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +17,7 @@ public class EditDeleteFlightController {
 	private AdminServiceInterface as;
 	
 	@RequestMapping("updateFlight") //-- updateFlightPage
-	public String updateFlight(Flight  flight , Model m) {
+	public String updateFlight(@Valid Flight  flight , Model m) {
 		as.updateFlight(flight);
 		m.addAttribute("message" , "flight added");
 		return "updateFlightPage";

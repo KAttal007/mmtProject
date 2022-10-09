@@ -1,5 +1,7 @@
 package com.mmt.admin.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +16,7 @@ public class AddFlightController {
     private AdminServiceInterface as;
 
     @RequestMapping("addFlight") // -- addFFlightPage
-    public String addFlight(Flight flight , Model m) {
+    public String addFlight(@Valid Flight flight , Model m) {
         as.addFlight(flight);
         m.addAttribute("message" , "Flight added");
         return "addFlightPage";

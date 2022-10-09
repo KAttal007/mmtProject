@@ -1,6 +1,7 @@
 package com.mmt.hotels.controllers;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +26,7 @@ public class ViewHotelsController {
 		return "hotelView";
 	}
 	@RequestMapping("viewHotelAtDestination") //-- viewHotelpage
-	public String viewHotelAtDestination(@RequestParam("search")String destination,Model m) {
+	public String viewHotelAtDestination(@Valid @RequestParam("search")String destination,Model m) {
 		m.addAttribute("hotelList" ,hs.hotelAtDestinationCity(destination) );
 		return "resultHotelPage";
 	}
@@ -39,7 +40,7 @@ public class ViewHotelsController {
 	}
 	
 	@RequestMapping("checkHotel")
-	public String checkHotel(@RequestParam("hotelId")String hotelId , Model m) {
+	public String checkHotel(@Valid @RequestParam("hotelId")String hotelId , Model m) {
 		Hotel hotel = hs.viewHotel(hotelId);
 		m.addAttribute("hotel" , hotel);
 		return "bookHotelPage";
