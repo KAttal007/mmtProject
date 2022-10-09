@@ -10,14 +10,18 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
       rel="stylesheet"
     />
-<title>Admin Login Form</title>
-</head>
 <body>
-<form action = adminLogin>
-Enter Admin ID:<input type="text" name="adminId"><br>
-Enter password:<input type="password" name="adminPassword"><br>
-<input type="submit" name="Login"><br>
-</form>
-
+<body>
+   <div class="login-box">
+      <h1>Login</h1>
+      <form action="adminLogin">
+        <label>UserID</label>
+        <input type="text" name="adminId"placeholder="" />
+        <label>Password</label>
+        <input type="password" name="adminPassword"placeholder="" />
+        <br>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
 </body>
 </html>

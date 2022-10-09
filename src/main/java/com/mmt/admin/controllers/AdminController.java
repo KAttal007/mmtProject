@@ -12,7 +12,7 @@ public class AdminController {
 	
 	@RequestMapping("adminHomePage")
 	public String adminHomePage() {
-		return "adminHome";
+		return "adminHomePage";
 	}
 	
 	@RequestMapping("goAddFlights")
