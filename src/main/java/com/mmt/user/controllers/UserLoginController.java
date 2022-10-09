@@ -6,6 +6,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,7 +20,11 @@ public class UserLoginController {
 	private UserServiceInterface us;
 	
 	@RequestMapping("userLogin")
-	public String userLogin(@Valid User user , HttpSession session  ,Model m) {
+	public String userLogin(@Valid User user , HttpSession session  ,Model m, BindingResult br) {
+		if(br.hasErrors()) {
+			m.addAttribute("message", "Login failed. Enter Details correctly");
+			return "userLoginPage";
+		}
 		if(us.userLogin(user)) {
 			String userId = us.userName(user.getEmailId(), user.getPassword());
 			session.setAttribute("userId", userId);
