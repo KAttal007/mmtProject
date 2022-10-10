@@ -26,33 +26,29 @@ public class Flight {
 			@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "Flight_"),
 			@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
 	private String flightId;
-	@NotBlank(message = "Airline Name must not be empty!")
+	@NotEmpty(message = "Airline Name must not be empty!")
 	private String airlineName;
-	@NotBlank(message = "Airline Number must not be empty!")
+	@NotEmpty(message = "Airline Number must not be empty!")
 	private String flightNumber;
-	@NotBlank(message = "Airline Duration (Time) must not be empty!")
+	@NotEmpty(message = "Airline Duration (Time) must not be empty!")
 	private String flightDuration;
-	@NotBlank(message = "Airline Departure (Time) must not be empty!")
+	@NotEmpty(message = "Airline Departure (Time) must not be empty!")
 	private String flightDeparture; // time
-	@NotBlank(message = "Airline Arrival (Time) must not be empty!")
+	@NotEmpty(message = "Airline Arrival (Time) must not be empty!")
 	private String flightArrival; // time
-	@NotBlank(message = "Airline Source (City) must not be empty!")
+	@NotEmpty(message = "Airline Source (City) must not be empty!")
 	private String flightSource;
-	@NotBlank(message = "Airline Destination (City) must not be empty!")
+	@NotEmpty(message = "Airline Destination (City) must not be empty!")
 	private String flightDestination;
-	@NotBlank(message = "Price Per Seat must not be empty max val = 210000, min val = 2500")
 	@Max(value = 210000)
 	@Min(value = 2500)
+	@NotNull(message = "Price Per Seat must not be empty max val = 210000, min val = 2500")
 	private int pricePerSeat;
-	@NotBlank(message = "No. Of Available Seats must not be empty")
-	@Size(max = 3, message = "Number of seats should not be more than 350")
-	@Max(value = 350)
-	@Min(value = 120)
+	
 	private int noOfAvilableSeats;
-	@NotBlank(message = "No. Of Seats must not be empty")
-	@Size(max = 3, message = "Number of seats should not be more than 350 or less than 120")
 	@Max(value = 350)
 	@Min(value = 120)
+	@NotNull(message = "No. Of Seats must not be empty")
 	private int noOfSeats;
 
 	@OneToMany(mappedBy = "flight")

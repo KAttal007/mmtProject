@@ -1,8 +1,12 @@
 package com.mmt.admin.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mmt.admin.model.Admin;
@@ -14,14 +18,16 @@ public class AdminLoginController {
 	private AdminServiceInterface as;
 	
 	@RequestMapping("adminLogin" )//adminLoginForm -- jsp
-	public String adminLogin(Admin admin , Model m) {
+	public String adminLogin(Admin admin , Model m, BindingResult br) {
+		if(br.hasErrors())
+		{
+			m.addAttribute("message" , "wrong username or password");
+			return "adminLoginPage";
+		}
 		if(as.login(admin)) return "adminHomePage";
 		m.addAttribute("message" , "wrong username or password");
 		return "adminLoginPage";
 	}
 	
-	@RequestMapping("goAddHotel")
-	public String addHotelNav() {
-		return "addHotelPage";
-	}
+
 }

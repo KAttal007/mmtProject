@@ -1,7 +1,10 @@
 package com.mmt.user.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.mmt.user.model.User;
 
 @Controller
 public class UserNavigationsController {
@@ -12,22 +15,15 @@ public class UserNavigationsController {
 	}
 	
 	@RequestMapping("userSignUp")
-	public String userSignUpPage() {
+	public String userSignUpPage(Model m) {
+		m.addAttribute("user", new User());
 		return "userSignUpPage";
 	}
 	
 	@RequestMapping("userLoginNav")
-	public String userLoginNav() {
+	public String userLoginNav(Model m) {
+		m.addAttribute("user", new User());
 		return "userLoginPage";
 	}
 	
-//	@RequestMapping("updateUserAddressPage")
-//	public String updateUserAddressPage() {
-//		return "userUpdateAddress";
-//	}
-//	
-//	@RequestMapping("addAddressToUser")
-//	public String addAddressToUser() {
-//		return "addAddressUser";
-//	}
 }

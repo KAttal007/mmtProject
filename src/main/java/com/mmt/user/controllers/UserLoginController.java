@@ -8,20 +8,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mmt.user.model.User;
 import com.mmt.user.services.UserServiceInterface;
 
 @Controller
-@Validated
 public class UserLoginController {
 	@Autowired
 	private UserServiceInterface us;
 	
 	@RequestMapping("userLogin")
-	public String userLogin(@Valid User user , HttpSession session  ,Model m, BindingResult br) {
-		if(br.hasErrors()) {
+	public String userLogin(@ModelAttribute("user") User user , HttpSession session  ,Model m, BindingResult br) {
+		if(br.hasFieldErrors("emailId")||br.hasFieldErrors("password")) {
 			m.addAttribute("message", "Login failed. Enter Details correctly");
 			return "userLoginPage";
 		}
@@ -30,13 +30,15 @@ public class UserLoginController {
 			session.setAttribute("userId", userId);
 			return "userHome";
 		}
-		m.addAttribute("message" , "wrong emailId or Password");
-		return "userLoginPage";
+		else {
+			m.addAttribute("message", "Login failed. Enter Details correctly");
+			return "userLoginPage";
+		}	
 	}
 	
 	@RequestMapping("userLogout")
 	public String userLogot(HttpSession session ) {
 		session.removeAttribute("userId");
-		return "userHome";
+		return "LandingHomePage";
 	}
 }

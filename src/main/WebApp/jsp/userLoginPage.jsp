@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,16 +12,19 @@
       rel="stylesheet"
     />
 <body>
-<body>
+
    <div class="login-box">
+   ${message}
       <h1>Login</h1>
-      <form action="userLogin">
+      <form:form action="userLogin" modelAttribute="user">
         <label>EmailID</label>
-        <input type="text" name="EmailId"placeholder="" />
+        <form:input type="text" path="emailId" placeholder="EmailId" class = "input"/>
+        <form:errors path="emailId" cssClass="error" />
         <label>Password</label>
-        <input type="password" name="password"placeholder="" />
+        <form:input type="password" path="password" placeholder="Password" class = "input" />
+        <form:errors path="password" cssClass="error" />
         <input type="submit" value="Submit" />
-      </form>
+      </form:form>
     </div>
     <p class="para-2" >
       Not have an account? <a href="userSignUp">Sign Up Here</a>

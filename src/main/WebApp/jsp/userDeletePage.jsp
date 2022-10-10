@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<form action="deleteUser">
+Enter the password to delete 
+<input type="text" name="pass" placeholder="password">
+<input type="submit" value="deleteAccount">
+</form>
 </body>
 </html>

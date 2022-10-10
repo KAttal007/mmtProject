@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -21,9 +22,9 @@ public class UserSignUpController {
 	private UserServiceInterface us;
 	
 	@RequestMapping("createUser")
-	public String userSignUp(@Valid User user , HttpSession session, BindingResult br, Model m) {
+	public String userSignUp(@Valid @ModelAttribute("user") User user , HttpSession session, BindingResult br, Model m) {
 		if(br.hasErrors()) {
-			m.addAttribute("message", "Login failed. Enter Details correctly");
+			m.addAttribute("message", "SignUp failed. Enter Details correctly");
 			return "userSignUpPage";
 		}
 		String userId = (String) session.getAttribute("userId");

@@ -8,23 +8,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:forEach items="${flightList}" var="list">
-<form action="checkFlight">
+<c:forEach items="${hotelList}" var="list">
+
 
 <table style="width:30%">
     <tr>
-    <th>Flight Number</th>
-    <td>${list.flightNumber}</td>
+    <th>Booking Id</th>
+    <td>${list.bookedHotelId}</td>
     </tr>
-    <tr>
-    <th>Airline Name</th>
-    <td>${list.airlineName}</td>
-    </tr>
+   
   </table>
-  <input type="hidden" value="${list.flightId}" name ="flightId">
-  
-  <input type ="submit" value="check">
-</form>
+ 
+
 </c:forEach>
 </body>
 </html>

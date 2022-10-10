@@ -4,14 +4,29 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Search Flight</title>
+ <link rel="stylesheet" href="/css/login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
 </head>
 <body>
-
+<div class="login-box">
+   <h1>Search</h1>
 <form action="viewFlightSourceToDestination">
-Enter Source city : <input type = "text" name ="source"><br>
-Enter Destination city : <input type = "text" name ="destination"><br>
-<input type="submit" >
+<label>Enter Source city </label>
+<input type = "text" name ="source"/>
+<label>Enter Destination city</label>
+<input type = "text" name ="destination"/>
+<input type="submit" value="Submit" />
 </form>
+</div>
 </body>
 </html>
+
+
+
+
+
+

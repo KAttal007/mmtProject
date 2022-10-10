@@ -12,7 +12,6 @@ import com.mmt.hotels.model.Hotel;
 import com.mmt.user.dao.UserDao;
 
 @Service
-
 public class AdminService implements AdminServiceInterface {
 	@Autowired
 	private AdminDao ad;
@@ -53,7 +52,10 @@ public class AdminService implements AdminServiceInterface {
 
 	@Override
 	public boolean addHotel(Hotel hotel) {
-		
+		if(hotel.getNoOfAcRooms()>0) hotel.setIsAc(true);
+		else hotel.setIsAc(false);
+		hotel.setNoOfAvilableAcRoom(hotel.getNoOfAcRooms());
+		hotel.setNoOfAvilableNonAcRoom(hotel.getNoOfNonAcRooms());
 		hd.save(hotel);
 		return true;
 	}
@@ -69,23 +71,27 @@ public class AdminService implements AdminServiceInterface {
 	}
 
 	@Override
-	public boolean updateHoetl(Hotel hotel) {
+	public boolean updateHotel(Hotel hotel) {
 		Hotel existHotel = hd.findById(hotel.getHotelId()).get();
 		if(existHotel==null) return false;
 		if(hotel.getHotelBrand()!=null) existHotel.setHotelBrand(hotel.getHotelBrand());
 		if(hotel.getHotelCity()!=null) existHotel.setHotelCity(hotel.getHotelCity());
 		if(hotel.getHotelName()!=null) existHotel.setHotelName(hotel.getHotelName());
 		if(hotel.getNoOfAcRooms()!= 0) existHotel.setNoOfAcRooms(hotel.getNoOfAcRooms());
-		if(hotel.getNoOfNonAcRooms()!=0) existHotel.setNoOfAvilableNonAcRoom(hotel.getNoOfNonAcRooms());
+		if(hotel.getNoOfNonAcRooms()!=0) existHotel.setNoOfNonAcRooms(hotel.getNoOfNonAcRooms());
 		if(hotel.getPriceAcRoom()!= 0) existHotel.setPriceAcRoom(hotel.getPriceAcRoom());
 		if(hotel.getPriceNonAcRoom()!=0)existHotel.setPriceNonAcRoom(hotel.getPriceNonAcRoom());
+		if(existHotel.getNoOfAcRooms()>0)existHotel.setIsAc(true);
+		if(existHotel.getNoOfAcRooms()<=0)existHotel.setIsAc(false);
+		existHotel.setNoOfAvilableAcRoom(existHotel.getNoOfAcRooms());
+		existHotel.setNoOfAvilableNonAcRoom(existHotel.getNoOfNonAcRooms());
 		hd.save(existHotel);
 		return true;
 	}
 
 	@Override
 	public boolean addFlight(Flight flight) {
-		
+		flight.setNoOfAvilableSeats(flight.getNoOfSeats());
 		fd.save(flight);
 		return true;
 	}
@@ -105,9 +111,6 @@ public class AdminService implements AdminServiceInterface {
 			return false;
 		}
 		
-		return true;
-		
+		return true;	
 	}
-	
-
 }

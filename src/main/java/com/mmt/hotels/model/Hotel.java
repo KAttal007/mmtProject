@@ -26,33 +26,33 @@ public class Hotel {
 	private String hotelName;
 	@NotEmpty(message = "Hotel Brand should not be empty")
 	private String hotelBrand;
-	@NotEmpty(message = "Price Of AC rooms should not be empty max val = 210000, min val = 2500")
+	
 	@Max(value = 210000)
 	@Min(value = 2500)
+	@NotNull(message = "Price Of AC rooms should not be empty max val = 210000, min val = 2500")
 	private float priceAcRoom;
-	@NotEmpty(message = "Price Of NON-AC rooms should not be empty max val = 2100, min val = 250")
+	
 	@Max(value = 2100)
-	@Min(value = 250)
+	@Min(value = 0)
+	@NotNull(message = "Price Of NON-AC rooms should not be empty max val = 2100, min val = 250")
 	private float priceNonAcRoom;
 	@NotEmpty(message = "Hotel City should not be empty")
 	private String hotelCity;
-	@NotEmpty(message = "No. Of AC rooms should not be empty")
+	
 	@Max(value = 420)
 	@Min(value = 50)
+	@NotNull(message = "No. Of AC rooms should not be empty")
 	private int noOfAcRooms;
-	@NotEmpty(message = "No. Of NON-AC rooms should not be empty")
+	
 	@Max(value = 210)
-	@Min(value = 25)
+	@Min(value = 0)
+	@NotNull(message = "No. Of NON-AC rooms should not be empty")
 	private int noOfNonAcRooms;
-	@Max(value = 420)
-	@Min(value = 50)
-	@NotEmpty(message = "No. Of Avl AC rooms should not be empty")
+
 	private int noOfAvilableAcRoom;
-	@Max(value = 210)
-	@Min(value = 25)
-	@NotEmpty(message = "No. Of Avl NON-AC rooms should not be empty")
+
 	private int noOfAvilableNonAcRoom;
-	@NotEmpty(message = "Confirm whether hotel is AC or not")
+	//@NotEmpty(message = "Confirm whether hotel is AC or not")
 	private Boolean isAc;
 
 	public Boolean getIsAc() {

@@ -7,16 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 ${message}
-${flight.flightNumber}
-${flight.airlineName}
-${flight.flightDuration}
-${flight.flightDeparture}
-${flight.noOfAvilableSeats}
-<form action="checkAvailabilty">
-<input type ="number" name ="noOfSeats">
-<input type="hidden" value="${flight.flightId}" name ="flightId">
+
+<form action="checkHotelAvailabilty">
+Enter No of Rooms
+<input type ="number" name ="noOfRooms">
+IS AC :
+<input type="checkbox" checked="checked" name="isAc" />
+<input type="hidden" value="${hotel.hotelId}" name ="hotelId">
 <input type ="submit" >
 </form>
+
 </body>
 </html>

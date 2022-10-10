@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -30,7 +29,7 @@ public class BookedFlight {
 	private String bookedFlightId;
 	private int noOfSeats;
 	private int price;
-	@OneToOne
+	@OneToOne ( orphanRemoval = true)
 	private Flight flight;
 	@ManyToOne
 	private User user;

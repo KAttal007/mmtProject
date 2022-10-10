@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
       rel="stylesheet"
     />
-<body>
+</head>
 <body>
    <div class="login-box">
       <h1>Login</h1>
@@ -19,7 +19,6 @@
         <input type="text" name="adminId"placeholder="" />
         <label>Password</label>
         <input type="password" name="adminPassword"placeholder="" />
-        <br>
         <input type="submit" value="Submit" />
       </form>
     </div>

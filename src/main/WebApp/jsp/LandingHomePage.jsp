@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,12 +11,12 @@
            <div class="dropdown">
   <p class="dropbtn">Profile</p>
   <div class="dropdown-content">
-  <a href="printUserDetails">View Profile</a>
-  <a href="userLogout">logout</a>
+  <a href="userLoginNav">Login</a>
+<!--    <a href="userLogout">logout</a> -->
 <!--   <a href="updateUserDetails">Update Profile</a> -->
 <!--   <a href="viewUserAddress">View Address</a> -->
 <!--   <a href="addAddressToUser">Add Address</a> -->
-   <a href="deleteUserByUser">Delete Account</a>
+  <a href="deleteUserByUser">Delete Account</a>
   </div>
   </div>
   <div class="dropdown">
@@ -32,11 +30,19 @@
   <p class="dropbtn">Flights</p>
   <div class="dropdown-content">
   <a href="searchFlight">Search Flights</a>
-  <a href="viewMyFlightBooking">My Flights Bookings</a>
+ <a href="viewMyFlightBooking">My Flights Bookings</a>
   </div>
   </div>
  
+ 
+
+   <div class="dropdown">
+  <p class="dropbtn">Admin Login</p>
+  <div class="dropdown-content">
+  <a href="adminLoginNav">Login</a>
   
+  </div>
+  </div>
   </nav>
   <div class="banner-area">
        
