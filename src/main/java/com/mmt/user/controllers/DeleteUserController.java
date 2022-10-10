@@ -16,14 +16,14 @@ public class DeleteUserController {
 	private UserServiceInterface us;
 	
 	@RequestMapping("deleteUserByUser")
-	public String deleteUserByUser(@RequestParam("password")String password ,HttpSession session , Model m) {
+	public String deleteUserByUser(HttpSession session , Model m) {
 		String userId = (String) session.getAttribute("userId");
-		if(userId==null) return "userLoginPage";
-		if(us.deleteUser(userId , password)) {
+		if(userId==null) return "redirect:/userLoginNav";
+		if(us.deleteUser(userId )) {
 			session.removeAttribute("userId");
-			return "homePage";
+			return "userHomePage";
 		}
-		m.addAttribute("message" , "wrong password");
-		return "userDeletePage";
+		m.addAttribute("message" , "user not found");
+		return "userHomePage";
 	}
 }

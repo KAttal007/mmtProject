@@ -34,7 +34,7 @@ public class BookedHotel {
 	private boolean isAc;
 	private float price;
 	private String type;
-	@OneToOne (orphanRemoval = true)
+	@OneToOne(orphanRemoval = true)
 	private Hotel hotel;
 	@ManyToOne
 	private User user;

@@ -40,7 +40,7 @@ public class UserService implements UserServiceInterface{
 
 	@Override
 	public boolean userLogin(User user) {
-		User existUser= ud.findByEmailIdAndPassword(user.getEmailId(), user.getPassword());
+		User existUser= ud.findByMailIDAndPassword(user.getMailID(), user.getPassword());
 		if(existUser==null) return false;
 		return true;
 	}
@@ -52,8 +52,8 @@ public class UserService implements UserServiceInterface{
 	}
 
 	@Override
-	public boolean deleteUser(String userId , String password) {
-		User existUser= ud.findByUserIdAndPassword(userId, password);
+	public boolean deleteUser(String userId ) {
+		User existUser= ud.findById(userId).get();
 		if(existUser==null) return false;
 			ud.deleteById(userId);
 			return true;
@@ -63,29 +63,26 @@ public class UserService implements UserServiceInterface{
 	public boolean updateUser(User user , String userId) {
 	
 		User existUser = ud.findById(userId).get();
-		if(user.getMobileNumber() != null) {
-			existUser.setMobileNumber(user.getMobileNumber());
+		if(user.getFirstName().isBlank()) {
+			user.setFirstName(existUser.getFirstName());
 		}
-//		if(user.getAddress()!=null) {
-//			existUser.setAddress(user.getAddress());
-//		}
-		if(user.getFirstName()!=null) {
-			existUser.setFirstName(user.getFirstName());
+		if(user.getMiddleName().isBlank()) {
+			user.setMiddleName(existUser.getMiddleName());
 		}
-		if(user.getLastName()!=null) {
-			existUser.setLastName(user.getLastName());
+		if(user.getMobileNumber().isBlank()) {
+			user.setMobileNumber(existUser.getMobileNumber());
 		}
-		if(user.getEmailId()!=null) {
-			existUser.setEmailId(user.getEmailId());
+		if(user.getLastName().isBlank()) {
+			user.setLastName(existUser.getLastName());
 		}
-		if(user.getMiddleName()!=null) {
-			existUser.setMiddleName(user.getMiddleName());
+		if(user.getMailID().isBlank()) {
+			user.setMailID(existUser.getMailID());
 		}
-		if(user.getPassword()!=null) {
-			existUser.setPassword(user.getPassword());
+		if(user.getPassword().isBlank()) {
+			user.setPassword(existUser.getPassword());
 		}
-		
-		ud.save(existUser);
+		user.setUserId(userId);
+		ud.save(user);
 		return false;
 	}
 
@@ -138,7 +135,7 @@ public class UserService implements UserServiceInterface{
 
 	@Override
 	public String userName(String email, String password) {
-		User user = ud.findByEmailIdAndPassword(email, password);
+		User user = ud.findByMailIDAndPassword(email, password);
 		return user.getUserId();
 	}
 

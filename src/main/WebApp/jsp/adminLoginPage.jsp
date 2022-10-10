@@ -22,5 +22,8 @@
         <input type="submit" value="Submit" />
       </form>
     </div>
+      <p class="para-2">
+      New Admin? <a href="adminSignUpNav">SignUp here</a>
+    </p>
 </body>
 </html>

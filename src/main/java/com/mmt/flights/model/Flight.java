@@ -1,19 +1,21 @@
 package com.mmt.flights.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
-import com.mmt.bookedFlight.model.BookedFlight;
+
 import com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator;
 
 @Entity
@@ -30,8 +32,7 @@ public class Flight {
 	private String airlineName;
 	@NotEmpty(message = "Airline Number must not be empty!")
 	private String flightNumber;
-	@NotEmpty(message = "Airline Duration (Time) must not be empty!")
-	private String flightDuration;
+	/* @NotEmpty(message = "Airline Duration (Time) must not be empty!") private String flightDuration;*/
 	@NotEmpty(message = "Airline Departure (Time) must not be empty!")
 	private String flightDeparture; // time
 	@NotEmpty(message = "Airline Arrival (Time) must not be empty!")
@@ -41,27 +42,16 @@ public class Flight {
 	@NotEmpty(message = "Airline Destination (City) must not be empty!")
 	private String flightDestination;
 	@Max(value = 210000)
-	@Min(value = 2500)
+	@Min(value = 0)
 	@NotNull(message = "Price Per Seat must not be empty max val = 210000, min val = 2500")
 	private int pricePerSeat;
 	
 	private int noOfAvilableSeats;
 	@Max(value = 350)
-	@Min(value = 120)
+	@Min(value = 0)
 	@NotNull(message = "No. Of Seats must not be empty")
 	private int noOfSeats;
-
-	@OneToMany(mappedBy = "flight")
-	private List<BookedFlight> bookedflights;
-
-	public List<BookedFlight> getBookedflights() {
-		return bookedflights;
-	}
-
-	public void setBookedflights(List<BookedFlight> bookedflights) {
-		this.bookedflights = bookedflights;
-	}
-
+	
 	public String getFlightSource() {
 		return flightSource;
 	}
@@ -70,6 +60,7 @@ public class Flight {
 		this.flightSource = flightSource;
 	}
 
+	
 	public int getNoOfSeats() {
 		return noOfSeats;
 	}
@@ -126,13 +117,13 @@ public class Flight {
 		this.airlineName = airlineName;
 	}
 
-	public String getFlightDuration() {
-		return flightDuration;
-	}
-
-	public void setFlightDuration(String flightDuration) {
-		this.flightDuration = flightDuration;
-	}
+//	public String getFlightDuration() {
+//		return flightDuration;
+//	}
+//
+//	public void setFlightDuration(String flightDuration) {
+//		this.flightDuration = flightDuration;
+//	}
 
 	public String getFlightDeparture() {
 		return flightDeparture;
@@ -149,5 +140,4 @@ public class Flight {
 	public void setFlightArrival(String flightArrival) {
 		this.flightArrival = flightArrival;
 	}
-
 }

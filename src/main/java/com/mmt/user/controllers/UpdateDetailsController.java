@@ -17,25 +17,10 @@ public class UpdateDetailsController {
 	@RequestMapping("updateUserDetails")
 	public String updateUserDetails(User user , HttpSession session) {
 		String userId = (String) session.getAttribute("userId");
-		if(userId==null) return "userLoginPage";
+		if(userId==null) return "redirect:/userLoginNav";
 		us.updateUser(user , userId);
 		return "userDetails";
 	}
-//	
-//	@RequestMapping("updateUserAddress")
-//	public String updateUserAddress(Address address,HttpSession session) {
-//		String userId = (String) session.getAttribute("userId");
-//		if(userId==null) return "userLoginPage";
-//		us.updateUserAddress(address, userId);
-//		return "userAddressDetails";
-//	}
-//	
-//	@RequestMapping("addUserAddress")
-//	public String addUserAddress(Address address,HttpSession session) {
-//		String userId = (String) session.getAttribute("userId");
-//		if(userId==null) return "userLoginPage";
-//		us.addAddress(address, userId);
-//		return "userAddressDetails";
-//	}
+
 	
 }

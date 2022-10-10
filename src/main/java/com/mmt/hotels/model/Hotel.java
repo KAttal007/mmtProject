@@ -1,11 +1,15 @@
 package com.mmt.hotels.model;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -28,7 +32,7 @@ public class Hotel {
 	private String hotelBrand;
 	
 	@Max(value = 210000)
-	@Min(value = 2500)
+	@Min(value = 0)
 	@NotNull(message = "Price Of AC rooms should not be empty max val = 210000, min val = 2500")
 	private float priceAcRoom;
 	
@@ -40,7 +44,7 @@ public class Hotel {
 	private String hotelCity;
 	
 	@Max(value = 420)
-	@Min(value = 50)
+	@Min(value = 0)
 	@NotNull(message = "No. Of AC rooms should not be empty")
 	private int noOfAcRooms;
 	
@@ -52,9 +56,9 @@ public class Hotel {
 	private int noOfAvilableAcRoom;
 
 	private int noOfAvilableNonAcRoom;
-	//@NotEmpty(message = "Confirm whether hotel is AC or not")
+	
 	private Boolean isAc;
-
+	
 	public Boolean getIsAc() {
 		return isAc;
 	}
@@ -62,7 +66,6 @@ public class Hotel {
 	public void setIsAc(Boolean isAc) {
 		this.isAc = isAc;
 	}
-
 	public String getHotelId() {
 		return hotelId;
 	}
@@ -142,5 +145,4 @@ public class Hotel {
 	public void setNoOfNonAcRooms(int noOfNonAcRooms) {
 		this.noOfNonAcRooms = noOfNonAcRooms;
 	}
-
 }

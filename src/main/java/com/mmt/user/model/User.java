@@ -3,20 +3,19 @@ package com.mmt.user.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import javax.persistence.OneToMany;
-
 import javax.persistence.Table;
-
-import javax.validation.constraints.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
-
 
 import com.mmt.bookedFlight.model.BookedFlight;
 import com.mmt.bookedHotel.model.BookedHotel;
@@ -43,24 +42,16 @@ public class User {
 	private String mobileNumber;
 	@Email(message = "Email is mandatory, and please enter a correctly formatted email.")
 	@NotEmpty
-	private String emailId;
+	private String mailID;
 	@Pattern(regexp="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
 	@NotEmpty(message = "Password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character")
 	private String password;
-//	@OneToOne(mappedBy = "userd")
-//	private Address address;
-	@OneToMany(mappedBy = "user")
+
+	@OneToMany(mappedBy = "user" , cascade=CascadeType.ALL, orphanRemoval = true)
 	private List<BookedHotel> hotelBooking = new ArrayList<>();
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user",  cascade=CascadeType.ALL ,orphanRemoval = true)
 	private List<BookedFlight> flightBooking = new ArrayList<>();
-	//sample comment
-//	public Address getAddress() {
-//		return address;
-//	}
-//
-//	public void setAddress(Address address) {
-//		this.address = address;
-//	}
+
 	public String getUserId() {
 		return userId;
 	}
@@ -91,11 +82,11 @@ public class User {
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
-	public String getEmailId() {
-		return emailId;
+	public String getMailID() {
+		return mailID;
 	}
-	public void setEmailId(String EmailId) {
-		this.emailId = EmailId;
+	public void setMailID(String mailID) {
+		this.mailID = mailID;
 	}
 	public String getPassword() {
 		return password;
@@ -115,5 +106,9 @@ public class User {
 	public void setFlightBooking(List<BookedFlight> flightBooking) {
 		this.flightBooking = flightBooking;
 	}
+
+	
+
+	
 	
 }

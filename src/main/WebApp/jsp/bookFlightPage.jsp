@@ -10,7 +10,6 @@
 ${message}
 ${flight.flightNumber}
 ${flight.airlineName}
-${flight.flightDuration}
 ${flight.flightDeparture}
 ${flight.noOfAvilableSeats}
 <form action="checkAvailabilty">

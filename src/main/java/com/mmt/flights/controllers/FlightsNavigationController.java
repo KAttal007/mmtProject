@@ -1,7 +1,10 @@
 package com.mmt.flights.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.mmt.flights.model.Flight;
 
 @Controller
 public class FlightsNavigationController {
@@ -11,7 +14,8 @@ public class FlightsNavigationController {
 	}
 	
 	@RequestMapping("goUpdateFlight")
-	public String goUpdateFlight() {
+	public String goUpdateFlight(Model m) {
+		m.addAttribute("updateFlight" , new Flight());
 		return "updateFlightPage";
 	}
 	

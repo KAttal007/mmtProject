@@ -17,43 +17,36 @@
     <div class="signup-box">
       <h1>Sign Up</h1>
       <h4>It's free and only takes a minute</h4>
-      <form:form action="createUser" modelAttribute="user">
+      <form:form action="createAdmin" modelAttribute="admin">
         <label>First Name</label>
         <form:input type="text" path ="firstName" placeholder="" />
-        
         <form:errors path="firstName" cssClass="error"/>
         
-        <label>Middle Name</label>
+     <%--    <label>Middle Name</label>
         <form:input type="text" path="middleName" placeholder="" />
-        
-        <form:errors path="middleName" cssClass="error"/>
+        <form:errors path="middleName" cssClass="error"/> --%>
         
         <label>Last Name</label>
         <form:input type="text" path="lastName" placeholder="" />
-        
         <form:errors path="lastName" cssClass="error"/>
         
         <label>Email</label>
-        <form:input type="email" path="mailID" placeholder="" />
-        
-        <form:errors path="mailID" cssClass="error"/>
+        <form:input type="email" path="adminEmail" placeholder="" />
+        <form:errors path="adminEmail" cssClass="error"/>
         
         <label>MobileNumber</label>
-        <form:input type="text" path="mobileNumber" placeholder="" />
-        
-        <form:errors path="mobileNumber" cssClass="error"/>
+        <form:input type="text" path="adminMobile" placeholder="" />
+        <form:errors path="adminMobile" cssClass="error"/>
         
         <label>Password</label>
-        <form:input type="password" path="password" placeholder="" />
-        
-        <form:errors path="password" cssClass="error"/>
-       <!--  <label>Confirm Password</label>
-        <input type="password" placeholder="" /> -->
+        <form:input type="password" path="adminPassword" placeholder="" />
+        <form:errors path="adminPassword" cssClass="error"/>
+
         <input type="submit" value="Submit" />
       </form:form>
     </div>
     <p class="para-2">
-      Already have an account? <a href="userLoginNav">Login here</a>
+      Already have an account? <a href="adminLoginNav">Login here</a>
     </p>
   </body>
 </html>

@@ -12,26 +12,29 @@ import com.mmt.hotels.model.Hotel;
 import com.mmt.user.dao.UserDao;
 
 @Service
+
 public class AdminService implements AdminServiceInterface {
 	@Autowired
 	private AdminDao ad;
-	
+
 	@Autowired
 	private UserDao ud;
-	
+
 	@Autowired
 	private HotelDao hd;
-	
+
 	@Autowired
 	private FlightDao fd;
 
 	@Override
 	public boolean login(Admin admin) {
-		
+
 		Admin existAdmin = ad.findById(admin.getAdminId()).get();
-		if(existAdmin==null) return false;
+		if (existAdmin == null)
+			return false;
 		else {
-			if(existAdmin.getAdminPassword().equals(admin.getAdminPassword())) return true;
+			if (existAdmin.getAdminPassword().equals(admin.getAdminPassword()))
+				return true;
 		}
 		return false;
 	}
@@ -44,16 +47,19 @@ public class AdminService implements AdminServiceInterface {
 
 	@Override
 	public boolean removeUser(String userId) {
-		
-		if(ud.findById(userId)==null) return false;
+
+		if (ud.findById(userId) == null)
+			return false;
 		ud.deleteById(userId);
 		return true;
 	}
 
 	@Override
 	public boolean addHotel(Hotel hotel) {
-		if(hotel.getNoOfAcRooms()>0) hotel.setIsAc(true);
-		else hotel.setIsAc(false);
+		if (hotel.getNoOfAcRooms() > 0)
+			hotel.setIsAc(true);
+		else
+			hotel.setIsAc(false);
 		hotel.setNoOfAvilableAcRoom(hotel.getNoOfAcRooms());
 		hotel.setNoOfAvilableNonAcRoom(hotel.getNoOfNonAcRooms());
 		hd.save(hotel);
@@ -62,8 +68,8 @@ public class AdminService implements AdminServiceInterface {
 
 	@Override
 	public boolean removeHotel(String hotelId) {
-		
-		if(hd.findById(hotelId)!=null) {
+
+		if (hd.findById(hotelId) != null) {
 			hd.deleteById(hotelId);
 			return true;
 		}
@@ -71,21 +77,31 @@ public class AdminService implements AdminServiceInterface {
 	}
 
 	@Override
-	public boolean updateHotel(Hotel hotel) {
+	public boolean updateHoetl(Hotel hotel) {
 		Hotel existHotel = hd.findById(hotel.getHotelId()).get();
-		if(existHotel==null) return false;
-		if(hotel.getHotelBrand()!=null) existHotel.setHotelBrand(hotel.getHotelBrand());
-		if(hotel.getHotelCity()!=null) existHotel.setHotelCity(hotel.getHotelCity());
-		if(hotel.getHotelName()!=null) existHotel.setHotelName(hotel.getHotelName());
-		if(hotel.getNoOfAcRooms()!= 0) existHotel.setNoOfAcRooms(hotel.getNoOfAcRooms());
-		if(hotel.getNoOfNonAcRooms()!=0) existHotel.setNoOfNonAcRooms(hotel.getNoOfNonAcRooms());
-		if(hotel.getPriceAcRoom()!= 0) existHotel.setPriceAcRoom(hotel.getPriceAcRoom());
-		if(hotel.getPriceNonAcRoom()!=0)existHotel.setPriceNonAcRoom(hotel.getPriceNonAcRoom());
-		if(existHotel.getNoOfAcRooms()>0)existHotel.setIsAc(true);
-		if(existHotel.getNoOfAcRooms()<=0)existHotel.setIsAc(false);
-		existHotel.setNoOfAvilableAcRoom(existHotel.getNoOfAcRooms());
-		existHotel.setNoOfAvilableNonAcRoom(existHotel.getNoOfNonAcRooms());
-		hd.save(existHotel);
+		if (existHotel == null)
+			return false;
+		if (hotel.getHotelBrand().isBlank())
+			hotel.setHotelBrand(existHotel.getHotelBrand());
+		if (hotel.getHotelCity().isBlank())
+			hotel.setHotelCity(existHotel.getHotelCity());
+		if (hotel.getHotelName().isBlank())
+			hotel.setHotelName(existHotel.getHotelName());
+		if (hotel.getNoOfAcRooms() == 0)
+			hotel.setNoOfAcRooms(existHotel.getNoOfAcRooms());
+		if (hotel.getNoOfNonAcRooms() == 0)
+			hotel.setNoOfNonAcRooms(existHotel.getNoOfNonAcRooms());
+		if (hotel.getPriceAcRoom() != existHotel.getPriceAcRoom())
+			hotel.setPriceAcRoom(existHotel.getPriceAcRoom());
+		if (hotel.getPriceNonAcRoom() != existHotel.getPriceAcRoom())
+			hotel.setPriceNonAcRoom(existHotel.getPriceNonAcRoom());
+		if (hotel.getNoOfAcRooms() > 0)
+			hotel.setIsAc(true);
+		if (hotel.getNoOfAcRooms() <= 0)
+			hotel.setIsAc(false);
+		hotel.setNoOfAvilableAcRoom(hotel.getNoOfAcRooms());
+		hotel.setNoOfAvilableNonAcRoom(hotel.getNoOfNonAcRooms());
+		hd.save(hotel);
 		return true;
 	}
 
@@ -98,7 +114,7 @@ public class AdminService implements AdminServiceInterface {
 
 	@Override
 	public boolean removeFlight(String flightId) {
-		if(fd.findById(flightId)!=null) {
+		if (fd.findById(flightId) != null) {
 			fd.deleteById(flightId);
 			return true;
 		}
@@ -107,10 +123,17 @@ public class AdminService implements AdminServiceInterface {
 
 	@Override
 	public boolean updateFlight(Flight flight) {
-		if(fd.findById(flight.getFlightId())==null) {
+		if (fd.findById(flight.getFlightId()) == null) {
 			return false;
 		}
-		
-		return true;	
+
+		return true;
+
+	}
+
+	@Override
+	public boolean createadmin(Admin admin) {
+		ad.save(admin);
+		return false;
 	}
 }

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
+  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
     
     
     
@@ -14,25 +14,34 @@
 </head>
 <body>
 <header>
+	<form:form action = "bookFlight" modelAttribute="card">
 	<div class="container">
 		<div class="left">
 			<h3>BILLING ADDRESS</h3>
-			<form>
-				Full name
-				<input type="text" name="nameOnCard" placeholder="Enter name">
+		
+				Full Name
+				<form:input type="text" path="nameOnCard" placeholder="Enter name"/>
+				
+				<form:errors path="nameOnCard" cssClass="error"/>
+				
 				Email
-				<input type="text" name="email" placeholder="Enter email">
+				<form:input type="text" path="email" placeholder="Enter email"/>
+				
+				<form:errors path="email" cssClass="error"/>
 
 				Address
-				<input type="text" name="address" placeholder="Enter address">
+				<form:input type="text" path="address" placeholder="Enter address"/>
+				
+				<form:errors path="address" cssClass="error"/>
 				
 				City
-				<input type="text" name="city" placeholder="Enter City">
+				<form:input type="text" path="city" placeholder="Enter City"/>
+				
+				<form:errors path="city" cssClass="error"/>
 				<div id="zip">
 					<label>
 						State
 						<select>
-							<option>Choose State..</option>
 							<option>Rajasthan</option>
 							<option>Hariyana</option>
 							<option>Uttar Pradesh</option>
@@ -41,29 +50,36 @@
 					</label>
 						<label>
 						Zip code
-						<input type="number" name="zipCode" placeholder="Zip code">
+						<form:input type="number" path="zipCode" placeholder="Zip code"/>
+						
+						<form:errors path="zipCode" cssClass="error"/>
 					</label>
 				</div>
-			</form>
+		
 		</div>
 		<div class="right">
 			<h3>PAYMENT</h3>
-			<form action = "bookFlight">
+			
 				Accepted Card <br>
 				<img src="image/card1.png" width="100">
 				<img src="image/card2.png" width="50">
 				<br><br>
 
 				Credit card number
-			<input type="text" name="cardNo" placeholder="Enter card number">
+			<form:input type="text" path="cardNo" placeholder="Enter card number"/>
+			
+			<form:errors path="cardNo" cssClass="error"/>
 				
 				Exp month
-				<input type="text" name="expMonth" placeholder="Enter Month">
+				<form:input type="text" path="expMonth" placeholder="Enter Month"/>
+				
+				<form:errors path="expMonth" cssClass="error"/>
+				
 				<div id="zip">
 					<label>
 						Exp year
 						<select>
-							<option>Choose Year..</option>
+	
 							<option>2022</option>
 							<option>2023</option>
 							<option>2024</option>
@@ -72,16 +88,20 @@
 					</label>
 						<label>
 						CVV
-						<input type="number" name="cvv" placeholder="CVV">
+						<form:input type="number" path="cvv" placeholder="CVV"/>
+						
+						<form:errors path="cvv" cssClass="error"/>
+						
 					</label>
 				</div>
 				<input type="hidden" value="${flightId}" name ="flightId">
 				<input type="hidden" value="${noOfSeats}" name ="noOfSeats">
 				<input type="submit" name="" value="Proceed to Checkout">
-			</form>
+		
 			
 		</div>
 	</div>
+	</form:form>
 </header>
 </body>
 </html>

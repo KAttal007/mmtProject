@@ -127,6 +127,14 @@ public class FlightService implements FlightServiceInterface {
 
 
 
+	@Override
+	public boolean isFlightPresent(String flightId) {
+		// TODO Auto-generated method stub
+		return fd.findById(flightId).isPresent();
+	}
+
+	
+	
 	
 
 

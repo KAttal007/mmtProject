@@ -4,11 +4,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.mmt.admin.model.Admin;
 import com.mmt.flights.model.Flight;
 import com.mmt.hotels.model.Hotel;
+import com.mmt.user.model.User;
 
 @Controller
 public class AdminController {
+	
+	@RequestMapping("adminSignUpNav")
+	public String adminSignUpPage(Model m) {
+		m.addAttribute("admin" ,new Admin());
+		return "adminSignUpPage";
+	}
+	
 	@RequestMapping("adminLoginNav")
 	public String adminLogin() {
 		return "adminLoginPage";
@@ -21,7 +30,7 @@ public class AdminController {
 	
 	@RequestMapping("goAddFlights")
 	public String goAddFlights(Model m) {
-		m.addAttribute("flight", new Flight());
+		m.addAttribute("flight" , new Flight());
 		return "addFlightPage";
 	}
 	
@@ -34,13 +43,9 @@ public class AdminController {
 	public String goRemoveFlight() {
 		return "removeFlightPage";
 	}
-	
 	@RequestMapping("goAddHotel")
-    public String addHotelNav(Model m) {
-        m.addAttribute("hotel" , new Hotel());
-        return "addHotelPage";
-    }
-	
-	
-
+	public String addHotelNav(Model m) {
+		m.addAttribute("hotel" , new Hotel());
+		return "addHotelPage";
+	}
 }

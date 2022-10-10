@@ -6,26 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mmt.admin.service.AdminServiceInterface;
 import com.mmt.flights.model.Flight;
+import com.mmt.flights.services.FlightServiceInterface;
 
 @Controller
-@Validated
 public class EditDeleteFlightController {
 	@Autowired
 	private AdminServiceInterface as;
 	
+	@Autowired
+	private FlightServiceInterface fs;
+	
 	@RequestMapping("updateFlight") //-- updateFlightPage
-	public String updateFlight(@Valid Flight flight , Model m, BindingResult br) {
-		if(br.hasErrors())
-		{
-			m.addAttribute("message" , "flight details not entered properly");
-			return "updateFlightPage";
-		}
+	public String updateFlight(@Valid @ModelAttribute("updateFlight") Flight  flight ,BindingResult br, Model m) {
+		if(br.hasErrors()) return "updateFlightPage";
+		if(!fs.isFlightPresent(flight.getFlightId())) {}
 		if(as.updateFlight(flight)) {
 			m.addAttribute("message" , "flight updated");
 			return "updateFlightPage";

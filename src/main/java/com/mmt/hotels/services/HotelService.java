@@ -15,6 +15,7 @@ import com.mmt.user.dao.UserDao;
 import com.mmt.user.model.User;
 
 @Service
+
 public class HotelService implements HotelServiceInterface {
 	
 	@Autowired

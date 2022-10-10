@@ -17,6 +17,7 @@ public interface FlightServiceInterface {
 	public Flight viewFlightDetails(String flight);
 	public boolean isPaymentDoneFlight(CardDetails cd);
 	public float flightPrice(String flightId , int noOfSeats);
+	public boolean isFlightPresent(String flightId);
 	//insert
 	//genrate duration
 	//genrate air tag
