@@ -6,12 +6,20 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/css/login.css" />
+<link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+</head>
+
 </head>
 <body>
 <c:forEach items="${list}" var="list">
 
+<div class="login-box">
 
-<table style="width:30%">
+<table >
     <tr>
     <th>Booking Id</th>
     <td>${list.bookedFlightId}</td>
@@ -38,7 +46,8 @@
     </tr>
   </table>
  
-
+</div><br>
 </c:forEach>
+
 </body>
 </html>
