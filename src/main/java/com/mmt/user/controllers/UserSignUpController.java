@@ -3,6 +3,8 @@ package com.mmt.user.controllers;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -17,6 +19,9 @@ import com.mmt.user.services.UserServiceInterface;
 public class UserSignUpController {
 	@Autowired
 	private UserServiceInterface us;
+	
+	Logger logger = LoggerFactory.getLogger(UserSignUpController.class);
+
 	
 	@RequestMapping("createUser")
 	public String userSignUp(@Valid @ModelAttribute("user") User user ,BindingResult br, HttpSession session) {

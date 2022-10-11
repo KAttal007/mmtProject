@@ -1,5 +1,7 @@
 package com.mmt.admin.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.mmt.admin.model.Admin;
 import com.mmt.flights.model.Flight;
 import com.mmt.hotels.model.Hotel;
-import com.mmt.user.model.User;
 
 @Controller
 public class AdminController {
 	
+	Logger logger = LoggerFactory.getLogger(AdminController.class);
 	@RequestMapping("adminSignUpNav")
 	public String adminSignUpPage(Model m) {
 		m.addAttribute("admin" ,new Admin());

@@ -3,6 +3,8 @@ package com.mmt.admin.controllers;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -16,6 +18,8 @@ import com.mmt.admin.service.AdminServiceInterface;
 public class AdminSignUpController {
 	@Autowired
 	private AdminServiceInterface as;
+	
+	Logger logger = LoggerFactory.getLogger(AdminSignUpController.class);
 	
 	@RequestMapping("createAdmin")
 	public String adminSignUp(@Valid @ModelAttribute("admin") Admin admin ,BindingResult br, HttpSession session) {

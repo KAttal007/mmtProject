@@ -3,17 +3,17 @@ package com.mmt.flights.controllers;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
 
 import com.mmt.flights.services.FlightServiceInterface;
+
 import com.mmt.payment.CardDetails;
 
 
@@ -23,6 +23,9 @@ import com.mmt.payment.CardDetails;
 public class BookFlightController {
 	@Autowired
 	private FlightServiceInterface fs;
+	
+	Logger logger = LoggerFactory.getLogger(BookFlightController.class);
+
 	
 	@RequestMapping("flightPaymentValidation")
 	public String flightPaymentValidation(Model m) {

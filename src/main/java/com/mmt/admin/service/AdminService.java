@@ -77,7 +77,7 @@ public class AdminService implements AdminServiceInterface {
 	}
 
 	@Override
-	public boolean updateHoetl(Hotel hotel) {
+	public boolean updateHotel(Hotel hotel) {
 		Hotel existHotel = hd.findById(hotel.getHotelId()).get();
 		if (existHotel == null)
 			return false;

@@ -2,6 +2,8 @@ package com.mmt.user.controllers;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,9 @@ import com.mmt.user.services.UserServiceInterface;
 public class ViewUserDetails {
 	@Autowired
 	private UserServiceInterface us;
+	
+	Logger logger = LoggerFactory.getLogger(ViewUserDetails.class);
+
 	
 	@RequestMapping("printUserDetails")
 	public RedirectView printUserDetailsRedirect(HttpSession session , Model m) {

@@ -2,12 +2,15 @@ package com.mmt.hotels.controllers;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mmt.flights.controllers.BookFlightController;
 import com.mmt.hotels.model.Hotel;
 import com.mmt.hotels.services.HotelServiceInterface;
 import com.mmt.user.services.UserServiceInterface;
@@ -18,6 +21,9 @@ public class ViewHotelsController {
 	private HotelServiceInterface hs;
 	@Autowired
 	private UserServiceInterface us;
+	
+	Logger logger = LoggerFactory.getLogger(ViewHotelsController.class);
+
 	
 	@RequestMapping("viewHotel") //-- viewHotelpage
 	public String viewHotel(Model m) {

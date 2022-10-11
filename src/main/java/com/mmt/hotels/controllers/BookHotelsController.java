@@ -3,15 +3,14 @@ package com.mmt.hotels.controllers;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.mmt.hotels.services.HotelServiceInterface;
 import com.mmt.payment.CardDetails;
 
@@ -20,7 +19,8 @@ import com.mmt.payment.CardDetails;
 public class BookHotelsController {
 	@Autowired 
 	private HotelServiceInterface hs;
-	
+	Logger logger = LoggerFactory.getLogger(BookHotelsController.class);
+
 	
 //	@RequestMapping("bookHotel") //--------bookHotelForm
 //	public String bookHotel(@Valid @ModelAttribute("card")CardDetails c,BindingResult br ,@RequestParam("hotelId")String hotelId , @RequestParam("noOfRooms")int noOfRooms,@RequestParam("isAc")boolean isAc, HttpSession session,Model m) {

@@ -2,6 +2,8 @@ package com.mmt.flights.controllers;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,8 @@ public class ViewFlightsController {
 	@Autowired
 	private FlightServiceInterface fs;
 	
+	Logger logger = LoggerFactory.getLogger(ViewFlightsController.class);
+
 	
 	@RequestMapping("viewFlightSourceToDestination")
 	public String sourceToDestinationFlight(@RequestParam("source")String source , @RequestParam("destination")String destination,Model m) {

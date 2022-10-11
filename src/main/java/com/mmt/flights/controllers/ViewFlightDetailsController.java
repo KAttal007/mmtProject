@@ -2,6 +2,8 @@ package com.mmt.flights.controllers;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,9 @@ public class ViewFlightDetailsController {
 	private FlightServiceInterface fs;
 	@Autowired
 	private UserServiceInterface us;
+	
+	Logger logger = LoggerFactory.getLogger(ViewFlightDetailsController.class);
+
 	
 	@RequestMapping("viewFlightOne")
 	public String viewFlightOne(@RequestParam("flightId")String flightId , Model m) {

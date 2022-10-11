@@ -1,6 +1,8 @@
 package com.mmt.admin.controllers;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,8 @@ import com.mmt.admin.service.AdminServiceInterface;
 public class AdminLoginController {
 	@Autowired
 	private AdminServiceInterface as;
+	
+	Logger logger = LoggerFactory.getLogger(AdminLoginController.class);
 	
 	@RequestMapping("adminLogin" )//adminLoginForm -- jsp
 	public String adminLogin(Admin admin , Model m) {

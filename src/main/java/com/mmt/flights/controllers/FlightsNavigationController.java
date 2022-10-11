@@ -1,5 +1,7 @@
 package com.mmt.flights.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +10,10 @@ import com.mmt.flights.model.Flight;
 
 @Controller
 public class FlightsNavigationController {
+	
+	
+	Logger logger = LoggerFactory.getLogger(FlightsNavigationController.class);
+	
 	@RequestMapping("searchFlight")
 	public String searchFlight() {
 		return "searchFlightPage";

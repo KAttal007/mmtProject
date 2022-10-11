@@ -2,6 +2,8 @@ package com.mmt.admin.controllers;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,7 @@ import com.mmt.hotels.model.Hotel;
 public class AddHotelController {
 	@Autowired
 	private AdminServiceInterface as;
-	
+	Logger logger = LoggerFactory.getLogger(AddHotelController.class);
 //	@RequestMapping("addHotel") // -- addHotelPage
 //	public String addHotel(Hotel hotel , Model m) {
 //		as.addHotel(hotel);
