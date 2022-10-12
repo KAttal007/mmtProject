@@ -35,6 +35,7 @@ public class AddHotelController {
 	@RequestMapping("addHotel") // -- addHotelPage
 	public String addHotel(@Valid @ModelAttribute("hotel") Hotel hotel,BindingResult br,Model m) {
 		if(br.hasErrors()) {
+			logger.error("Hotel Not added");
 			return "addHotelPage";
 		}
 		else {
@@ -42,6 +43,7 @@ public class AddHotelController {
 			m.addAttribute("message","hotel Added Successfully");
 			return "addHotelPage";
 		}
+		
 	}
 	
 	

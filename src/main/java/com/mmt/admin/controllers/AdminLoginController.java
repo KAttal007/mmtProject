@@ -18,11 +18,11 @@ public class AdminLoginController {
 	
 	Logger logger = LoggerFactory.getLogger(AdminLoginController.class);
 	
-	@RequestMapping("adminLogin" )//adminLoginForm -- jsp
+	@RequestMapping("adminLogin" )//adminLoginPage -- jsp
 	public String adminLogin(Admin admin , Model m) {
 		if(as.login(admin)) return "adminHomePage";
 		m.addAttribute("message" , "wrong username or password");
-		return "adminLoginForm";
+		return "adminLoginPage";
 	}
 	
 	@RequestMapping("adminLogout")

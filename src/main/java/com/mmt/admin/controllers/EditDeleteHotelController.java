@@ -27,12 +27,15 @@ public class EditDeleteHotelController {
 	
 	@RequestMapping("updateHotel") //-- updateHotelPage
 	public String updateHotel(@Valid @ModelAttribute("updateHotel") Hotel hotel ,BindingResult br ,Model m) {
-		if(br.hasErrors()) return "updateHotelPage";
+		if(br.hasErrors()) {
+			logger.error("Hotel Not updated");
+			return "updateHotelPage";}
 		if(as.updateHotel(hotel)) {
 			m.addAttribute("message","hotel updated");
 			return "adminHome";
 		}
 		m.addAttribute("message","hotel not found");
+		logger.error("Hotel Not Found");
 		return "updateHotelPage";
 	}
 	
@@ -44,6 +47,7 @@ public class EditDeleteHotelController {
 			return "adminHome";
 		}
 		m.addAttribute("message","Wrong id");
+		logger.error("Hotel Not Deleted");
 		return "removeHotelPage";
 	}
 }

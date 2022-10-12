@@ -29,6 +29,8 @@ public class AddFlightController {
     		as.addFlight(flight);
             m.addAttribute("message" , "Flight added");
     	}
-        return "addFlightPage";
+    	logger.error("Flight Not added");
+        return "addFlightPage"; //throw new exception
+        
     }
 }

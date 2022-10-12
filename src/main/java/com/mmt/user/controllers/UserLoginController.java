@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.mmt.user.exceptions.UserNotFoundException;
 import com.mmt.user.model.User;
 import com.mmt.user.services.UserServiceInterface;
 
@@ -21,8 +23,16 @@ public class UserLoginController {
 	
 	Logger logger = LoggerFactory.getLogger(UserLoginController.class);
 	
+	
+	@ExceptionHandler(value = {UserNotFoundException.class})
+	public String UserNotFoundExceptionHandler(Model m) {
+		m.addAttribute("message","User not found in database");
+		logger.error("User Not Found");
+		return "redirect:/userLoginNav";
+	}
+	
 	@RequestMapping("userLogin")
-	public String userLogin(@ModelAttribute("user") User user ,BindingResult br, HttpSession session  ,Model m) {
+	public String userLogin(@ModelAttribute("user") User user ,BindingResult br, HttpSession session  ,Model m) throws UserNotFoundException {
 		if(br.hasErrors()) {
 			return "userLoginPage";
 		}
@@ -31,8 +41,7 @@ public class UserLoginController {
 			session.setAttribute("userId", userId);
 			return "userHome";
 		}
-		m.addAttribute("message" , "wrong userName or Password");
-		return "userLoginPage";
+		throw new UserNotFoundException("User Not Found");
 	}
 	
 	@RequestMapping("userLogout")

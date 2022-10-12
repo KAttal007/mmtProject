@@ -57,6 +57,7 @@
 				</div>
 		
 		</div>
+		&nbsp; 
 		<div class="right">
 			<h3>PAYMENT</h3>
 			
@@ -95,7 +96,10 @@
 					</label>
 				</div>
 				<input type="hidden" value="${flightId}" name ="flightId">
+				<!-- Flight: ${flight.airlineName} ${flight.flightNumber}<br>-->
 				<input type="hidden" value="${noOfSeats}" name ="noOfSeats">
+				<br>No of Seats Booked: ${noOfSeats}<br>
+				Total Price for Booking: ${price}
 				<input type="submit" name="" value="Proceed to Checkout">
 		
 			

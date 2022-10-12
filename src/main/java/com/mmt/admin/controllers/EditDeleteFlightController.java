@@ -29,13 +29,16 @@ public class EditDeleteFlightController {
 	
 	@RequestMapping("updateFlight") //-- updateFlightPage
 	public String updateFlight(@Valid @ModelAttribute("updateFlight") Flight  flight ,BindingResult br, Model m) {
-		if(br.hasErrors()) return "updateFlightPage";
+		if(br.hasErrors()) { 
+			logger.error("Flight Not updated");
+			return "updateFlightPage";}
 		if(!fs.isFlightPresent(flight.getFlightId())) {}
 		if(as.updateFlight(flight)) {
 			m.addAttribute("message" , "flight updated");
 			return "updateFlightPage";
 		}
 		m.addAttribute("message" , "flight not found");
+		logger.error("Flight Not found");
 		return "updateFlightPage";
 	}
 	
@@ -46,6 +49,7 @@ public class EditDeleteFlightController {
 			return "removeFlightPage";
 		}
 		m.addAttribute("message" , "flight not found");
+		logger.error("Flight Not Deleted");
 		return "removeFlightPage";
 	}
 }

@@ -26,6 +26,7 @@ public class AdminSignUpController {
 		String adminId = (String) session.getAttribute("adminId");
 		if(adminId!=null) return "adminHomePage";
 		if(br.hasErrors()) {
+			logger.error("Admin SignUp Unsuccessful");
 			return "adminSignUpPage";
 		}
 		as.createadmin(admin);
