@@ -153,7 +153,7 @@ class MmtProjectApplicationTests {
 		fs.bookFlight(user.getUserId(), flight.getFlightId(), flight.getNoOfSeats());
 		bf = bfd.findById(flight.getFlightId()).get();
 		assertEquals("Air India",bf.getFlight().getAirlineName());
-	} // giving error but works fine during JSP Frontend runs
+	} 
 	
 	@Test
 	public void testUserBookingHotel() {
@@ -163,6 +163,6 @@ class MmtProjectApplicationTests {
 		hs.bookHotel(hotel.getHotelId(), user.getUserId(), hotel.getNoOfAcRooms(), true);
 		bh = bhd.findById(hotel.getHotelId()).get();
 		assertEquals("Vivanta",bh.getHotel().getHotelName());
-	} // giving error but works fine during JSP Frontend runs
+	} 
 
 }
