@@ -33,14 +33,14 @@ public class AdminService implements AdminServiceInterface {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	@Override
-	public boolean removeUser(String userId) {
-
-		if (!ud.findById(userId).isPresent())
-			return false;
-		ud.deleteById(userId);
-		return true;
-	}
+//	@Override
+//	public boolean removeUser(String userId) {
+//
+//		if (!ud.findById(userId).isPresent())
+//			return false;
+//		ud.deleteById(userId);
+//		return true;
+//	}
 	@Override
 	public boolean addHotel(Hotel hotel) {
 		if (hotel.getNoOfAcRooms() > 0)
@@ -105,7 +105,7 @@ public class AdminService implements AdminServiceInterface {
 	}
 	@Override
 	public boolean updateFlight(Flight flight) {
-		if (fd.findById(flight.getFlightId()).isPresent()) {
+		if (!fd.findById(flight.getFlightId()).isPresent()) {
 			fd.save(flight);
 			return false;
 		}

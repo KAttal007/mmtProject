@@ -33,8 +33,9 @@ public class Admin {
 	@Email
 	@NotEmpty
 	private String adminEmail;
-	@NotNull
-	private long adminMobile;
+	@Pattern(regexp="^(\\+91[\\-\\s]?)?[0]?(91)?[789]\\d{9}$")
+	@NotEmpty(message = "Phone Number is Mandatory")
+	private String adminMobile;
 	@Pattern(regexp="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
 	@NotEmpty(message = "Password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character")
 	private String adminPassword;
@@ -62,10 +63,10 @@ public class Admin {
 	public void setAdminEmail(String adminEmail) {
 		this.adminEmail = adminEmail;
 	}
-	public long getAdminMobile() {
+	public String getAdminMobile() {
 		return adminMobile;
 	}
-	public void setAdminMobile(long adminMobile) {
+	public void setAdminMobile(String adminMobile) {
 		this.adminMobile = adminMobile;
 	}
 	public String getAdminPassword() {

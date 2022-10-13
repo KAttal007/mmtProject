@@ -7,7 +7,6 @@ import com.mmt.hotels.model.Hotel;
 public interface AdminServiceInterface {
 	public boolean login(Admin admin);
 	public boolean logout();// to be implemented
-	public boolean removeUser(String userId);
 	public boolean addHotel(Hotel hotel);
 	public boolean removeHotel(String hotelId);
 	public boolean updateHotel(Hotel hotel);
