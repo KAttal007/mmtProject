@@ -29,7 +29,7 @@ public class AdminSignUpController {
 			logger.error("Admin SignUp Unsuccessful");
 			return "adminSignUpPage";
 		}
-		as.createadmin(admin);
+		as.createAdmin(admin);
 		return "adminLoginPage";
 	}
 }

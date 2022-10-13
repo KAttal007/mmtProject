@@ -1,6 +1,5 @@
 package com.mmt.bookedHotel.model;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,14 +20,11 @@ import com.mmt.user.model.User;
 public class BookedHotel {
 	@Id
 	@GeneratedValue(strategy =GenerationType.SEQUENCE,generator = "bookedHotel_seq")
-	@GenericGenerator(name="bookedHotel_seq",
-	            strategy = "com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator",
+	@GenericGenerator(name="bookedHotel_seq",strategy = "com.mmt.sequencegenerator.StringPrefixedSequenceIdGenerator",
 	            parameters = {
 	                    @Parameter(name=StringPrefixedSequenceIdGenerator.INCREMENT_PARAM,value="1"),
 	                    @Parameter(name=StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER,value="bookedHotel_"),
-	                    @Parameter(name=StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER,value="%05d")
-	            }
-	            )
+	                    @Parameter(name=StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER,value="%05d")})
 	private String bookedHotelId;
 	private int noOfRooms;
 	private boolean isAc;
@@ -79,8 +75,5 @@ public class BookedHotel {
 	}
 	public void setType(String type) {
 		this.type = type;
-	}
-	
-	
-	
+	}	
 }

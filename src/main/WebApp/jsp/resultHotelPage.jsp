@@ -28,12 +28,10 @@
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
-
 .topnav {
   overflow: hidden;
   background-color: #333;
 }
-
 .topnav a {
   float: left;
   color: #4287f5;
@@ -42,12 +40,10 @@
   text-decoration: none;
   font-size: 17px;
 }
-
 .topnav a:hover {
   background-color: #ddd;
   color: black;
 }
-
 .topnav a.active {
   background-color: #04AA6D;
   color: white;
@@ -60,6 +56,7 @@
   </div>
 <body>
 <div>
+${message}
 <c:forEach items="${hotelList}" var="hotelList">
 <br>
 <h3>Hotel</h3>

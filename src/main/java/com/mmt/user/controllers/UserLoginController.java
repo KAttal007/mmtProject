@@ -28,11 +28,13 @@ public class UserLoginController {
 	public String UserNotFoundExceptionHandler(Model m) {
 		m.addAttribute("message","User not found in database");
 		logger.error("User Not Found");
-		return "redirect:/userLoginNav";
+		//return "redirect:/userLoginNav";
+		return "userNotFoundAlert";
 	}
 	
 	@RequestMapping("userLogin")
-	public String userLogin(@ModelAttribute("user") User user ,BindingResult br, HttpSession session  ,Model m) throws UserNotFoundException {
+	public String userLogin(@ModelAttribute("user") User user ,BindingResult br, HttpSession session  ,Model m) 
+			throws UserNotFoundException {
 		if(br.hasErrors()) {
 			return "userLoginPage";
 		}

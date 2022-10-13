@@ -12,7 +12,7 @@
 <h3 style="color:#CC6666;">${message}</h3>
  <div class="login-box">
  <form:form action="updateFlight"  modelAttribute="updateFlight">
- 		<h1 style="color:#CC6666;">Add new Flights</h1>
+ 		<h1 style="color:#CC6666;">Update Flights</h1>
  		
  		<form:input type = "text" path = "flightId" class ="input" value="" placeholder="Enter Flight ID"/>
  		

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mmt.user.exceptions.UserIncorrectSignUpException;
+import com.mmt.user.exceptions.EmailAlreadyExistsException;
 import com.mmt.user.model.User;
 import com.mmt.user.services.UserServiceInterface;
 
@@ -23,21 +23,25 @@ public class UserSignUpController {
 	private UserServiceInterface us;
 	
 	Logger logger = LoggerFactory.getLogger(UserSignUpController.class);
-	@ExceptionHandler(value = {UserIncorrectSignUpException.class})
-	public String UserIncorrectSignUpException(Model m) {
-		m.addAttribute("message","User Details Incorrectly Entered During Sign Up");
-		logger.error("User Details Incorrectly Entered During Sign Up");
-		return "redirect:/userSignUp";
+	
+	@ExceptionHandler(value = {EmailAlreadyExistsException.class})
+	public String EmailAlreadyExistExceptionHandler(Model m) {
+		logger.error("Email ID alredy in use");
+		// return "redirect:/userLoginNav";
+		return "emailAlreadyExist";
 	}
 
 	@RequestMapping("createUser")
-	public String userSignUp(@Valid @ModelAttribute("user") User user ,BindingResult br, HttpSession session) throws UserIncorrectSignUpException {
+	public String userSignUp(@Valid @ModelAttribute("user") User user ,BindingResult br, HttpSession session) throws EmailAlreadyExistsException {
 		String userId = (String) session.getAttribute("userId");
-		if(userId!=null) return "userHome";
-		if(br.hasErrors()) {
-			throw new UserIncorrectSignUpException("User Details Incorrectly Entered During Sign Up");
+		if (userId != null)
+			return "userHome";
+		if (br.hasErrors()) {
+			return "userSignUpPage";
 		}
-		us.createuser(user);
-		return "userLoginPage";
+		if (us.createuser(user)) {
+			return "userLoginPage";
+		}
+		throw new EmailAlreadyExistsException("Email Alredy exist");
 	}
 }

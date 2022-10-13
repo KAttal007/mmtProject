@@ -70,8 +70,4 @@ public class BookedFlight {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
-	
-	
-	
 }

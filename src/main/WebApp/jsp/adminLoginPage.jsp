@@ -14,6 +14,7 @@
 <body>
    <div class="login-box">
       <h1>Login</h1>
+      <h3>${message }</h3>
       <form action="adminLogin">
         <label>UserID</label>
         <input type="text" name="adminId"placeholder="" />

@@ -14,5 +14,5 @@ public interface AdminServiceInterface {
 	public boolean addFlight(Flight flight);
 	public boolean removeFlight(String flightId);
 	public boolean updateFlight(Flight flight);
-	public boolean createadmin(Admin admin);
+	public boolean createAdmin(Admin admin);
 }

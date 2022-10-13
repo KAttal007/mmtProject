@@ -12,48 +12,35 @@ import com.mmt.hotels.model.Hotel;
 import com.mmt.user.dao.UserDao;
 
 @Service
-
 public class AdminService implements AdminServiceInterface {
 	@Autowired
 	private AdminDao ad;
-
 	@Autowired
 	private UserDao ud;
-
 	@Autowired
 	private HotelDao hd;
-
 	@Autowired
 	private FlightDao fd;
-
 	@Override
 	public boolean login(Admin admin) {
-
-		Admin existAdmin = ad.findById(admin.getAdminId()).get();
-		if (existAdmin == null)
-			return false;
-		else {
-			if (existAdmin.getAdminPassword().equals(admin.getAdminPassword()))
-				return true;
-		}
+		Admin exist = ad.findByAdminIdAndAdminPassword(admin.getAdminId(), admin.getAdminPassword());
+		if (exist != null)
+			return true;
 		return false;
 	}
-
 	@Override
 	public boolean logout() {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	@Override
 	public boolean removeUser(String userId) {
 
-		if (ud.findById(userId) == null)
+		if (!ud.findById(userId).isPresent())
 			return false;
 		ud.deleteById(userId);
 		return true;
 	}
-
 	@Override
 	public boolean addHotel(Hotel hotel) {
 		if (hotel.getNoOfAcRooms() > 0)
@@ -65,22 +52,20 @@ public class AdminService implements AdminServiceInterface {
 		hd.save(hotel);
 		return true;
 	}
-
 	@Override
 	public boolean removeHotel(String hotelId) {
 
-		if (hd.findById(hotelId) != null) {
+		if (hd.findById(hotelId).isPresent()) {
 			hd.deleteById(hotelId);
 			return true;
 		}
 		return false;
 	}
-
 	@Override
 	public boolean updateHotel(Hotel hotel) {
-		Hotel existHotel = hd.findById(hotel.getHotelId()).get();
-		if (existHotel == null)
+		if (!hd.findById(hotel.getHotelId()).isPresent())
 			return false;
+		Hotel existHotel = hd.findById(hotel.getHotelId()).get();
 		if (hotel.getHotelBrand().isBlank())
 			hotel.setHotelBrand(existHotel.getHotelBrand());
 		if (hotel.getHotelCity().isBlank())
@@ -104,35 +89,30 @@ public class AdminService implements AdminServiceInterface {
 		hd.save(hotel);
 		return true;
 	}
-
 	@Override
 	public boolean addFlight(Flight flight) {
 		flight.setNoOfAvilableSeats(flight.getNoOfSeats());
 		fd.save(flight);
 		return true;
 	}
-
 	@Override
 	public boolean removeFlight(String flightId) {
-		if (fd.findById(flightId) != null) {
+		if (fd.findById(flightId).isPresent()) {
 			fd.deleteById(flightId);
 			return true;
 		}
 		return false;
 	}
-
 	@Override
 	public boolean updateFlight(Flight flight) {
-		if (fd.findById(flight.getFlightId()) == null) {
+		if (fd.findById(flight.getFlightId()).isPresent()) {
+			fd.save(flight);
 			return false;
 		}
-
 		return true;
-
 	}
-
 	@Override
-	public boolean createadmin(Admin admin) {
+	public boolean createAdmin(Admin admin) {
 		ad.save(admin);
 		return false;
 	}
