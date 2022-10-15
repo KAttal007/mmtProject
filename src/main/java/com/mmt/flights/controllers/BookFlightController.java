@@ -47,6 +47,7 @@ public class BookFlightController {
 			if(fs.bookFlight(userId, flightId, noOfSeats)) {
 				session.removeAttribute("flightId");
 				session.removeAttribute("noOfSeats");
+				logger.info("User "+userId+" has booked Hotel "+flightId);
 				return "userHome";
 			}
 		}

@@ -40,8 +40,8 @@ class MmtProjectApplicationTests {
 	@Autowired
 	private BookedFlightDao bfd;
 
-	User user;
-	Admin admin;
+	User user = new User();
+	Admin admin = new Admin();
 	AdminService as = new AdminService();
 	Hotel hotel = new Hotel();
 	Flight flight = new Flight();

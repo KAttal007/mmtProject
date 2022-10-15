@@ -27,14 +27,19 @@ public class BookHotelsController {
 	public String bookHotel(@Valid @ModelAttribute("cardHotel") CardDetails cardHotel, BindingResult br,
 			HttpSession session) {
 		String userId = (String) session.getAttribute("userId");
-		if (br.hasErrors())
+		if (br.hasErrors()) {
+			logger.error("Incorrect Payment Details entered by User "+userId);
 			return "hotelPaymentPage";
-		if (userId == null)
+			}
+		if (userId == null) {
+			logger.error("No User ");
 			return "redirect:/userLoginNav";
+		}
 		String hotelId = (String) session.getAttribute("hotelId");
 		boolean isAc = (boolean) session.getAttribute("isAc");
 		int noOfRooms = (int) session.getAttribute("noOfRooms");
 		hs.bookHotel(hotelId, userId, noOfRooms, isAc);
+		logger.info("User "+userId+" has booked Hotel "+hotelId+" with number of rooms "+noOfRooms);
 		return "userHome";
 	}
 }

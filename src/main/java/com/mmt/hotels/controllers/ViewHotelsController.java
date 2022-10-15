@@ -31,15 +31,15 @@ public class ViewHotelsController {
 
 	@ExceptionHandler(value = HotelNotFoundException.class)
 	public String hotelFoundExceptionHandler(Model m) {
-		m.addAttribute("message", "No Hotel Found At Destination");
-		logger.error("No Hotel Found At Destination");
+		m.addAttribute("message", "Error: 404. No Hotel Found At Destination");
+		
 		return "resultHotelPage";
 	}
 	
 	@ExceptionHandler(value =NoHotelBookingFoundException.class)
 	public String noHotelBookingByUserExceptionHandler(Model m) {
 		m.addAttribute("message", "No Booking Found");
-		logger.error("No Hotel Booked by user");
+		
 		return "viewMyHotelBookingPage";
 	}
 	
@@ -55,7 +55,8 @@ public class ViewHotelsController {
 			m.addAttribute("hotelList" ,hs.hotelAtDestinationCity(destination) );
 			return "resultHotelPage";
 		}else {
-			throw new HotelNotFoundException("No Hotel Found At Destination");
+			logger.error("No Hotel Found At Destination "+destination);
+			throw new HotelNotFoundException("Error: 404. No Hotel Found At Destination");
 		}
 	}
 	
@@ -68,6 +69,7 @@ public class ViewHotelsController {
 			m.addAttribute("hotelList" , hotel);
 			return "viewMyHotelBookingPage";
 		}
+		logger.error("No Hotel Booked by user "+userId);
 		throw new NoHotelBookingFoundException("No booking Done by user");
 	}
 	

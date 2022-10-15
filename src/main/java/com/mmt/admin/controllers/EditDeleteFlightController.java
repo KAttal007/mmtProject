@@ -38,8 +38,8 @@ public class EditDeleteFlightController {
 
 	@ExceptionHandler(value = FlightNotDeletedException.class)
 	public String flightNotDeletedExceptionHandler(Model m) {
-		m.addAttribute("message", "flight not found");
-		logger.error("Flight Not Found");
+		m.addAttribute("message", "flight not deleted");
+		logger.error("Flight Not Deleted");
 		return "removeFlightPage";
 	}
 
@@ -63,8 +63,8 @@ public class EditDeleteFlightController {
 			m.addAttribute("message", "flight Deleted");
 			return "removeFlightPage";
 		} else {
-			System.out.println("delted");
-			throw new FlightNotDeletedException("Flight Not Found");
+			System.out.println("deleted");
+			throw new FlightNotDeletedException("Flight Not Deleted");
 		}
 	}
 }

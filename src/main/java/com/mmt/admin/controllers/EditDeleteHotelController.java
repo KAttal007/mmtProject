@@ -41,7 +41,7 @@ public class EditDeleteHotelController {
 	}
 	
 	@RequestMapping("updateHotel") //-- updateHotelPage
-	public String updateHotel(@Valid @ModelAttribute("updateHotel") Hotel hotel ,BindingResult br ,Model m) {
+	public String updateHotel(@Valid @ModelAttribute("updateHotel") Hotel hotel ,BindingResult br ,Model m) throws HotelIdNotFoundException{
 		if(br.hasErrors()) {
 			logger.error("Hotel Not updated");
 			return "updateHotelPage";}
@@ -49,13 +49,13 @@ public class EditDeleteHotelController {
 			m.addAttribute("message","hotel updated");
 			return "adminHome";
 		}
-		m.addAttribute("message","hotel not found");
-		logger.error("Hotel Not Found");
-		return "updateHotelPage";
+		m.addAttribute("message","hotel not updated");
+		logger.error("Hotel Not Updated");
+		throw new HotelIdNotFoundException("Hotel not updated");
 	}
 	
 	@RequestMapping("deleteHotel") //-- deleteHotelPage
-	public String deleteHotel(@RequestParam("hotelId")String hotelId , Model m) {
+	public String deleteHotel(@RequestParam("hotelId")String hotelId , Model m) throws HotelNotDeletedException{
 		
 		if(as.removeHotel(hotelId)) {
 			m.addAttribute("message","hotel deleted");
@@ -63,6 +63,6 @@ public class EditDeleteHotelController {
 		}
 		m.addAttribute("message","Wrong id");
 		logger.error("Hotel Not Deleted");
-		return "removeHotelPage";
+		throw new HotelNotDeletedException("Hotel Not Deleted");
 	}
 }

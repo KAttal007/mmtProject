@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mmt.bookedFlight.model.BookedFlight;
+import com.mmt.flights.exceptions.FlightSeatsNotAvailableException;
 import com.mmt.flights.model.Flight;
 import com.mmt.flights.services.FlightServiceInterface;
 import com.mmt.user.exceptions.NoFlightBookingException;
@@ -34,6 +35,16 @@ public class ViewFlightDetailsController {
 		logger.error("No flight booked");
 		return "resultFlightPage";
 	}
+	
+	@ExceptionHandler(value = FlightSeatsNotAvailableException.class)
+	public String flightSeatsNAExceptionHandler(Model m)
+	{
+		m.addAttribute("message" , "No seat avilable");
+		
+		return "bookFlightPage";
+	}
+	
+	
 	@RequestMapping("viewFlightOne")
 	public String viewFlightOne(@RequestParam("flightId")String flightId , Model m) {
 		Flight flight =fs.viewFlightDetails(flightId);
@@ -41,7 +52,8 @@ public class ViewFlightDetailsController {
 		return "viewOneFlightPage";
 	}
 	@RequestMapping("checkAvailabilty")
-	public String checkAvailabilty(@RequestParam("flightId")String flightId , @RequestParam("noOfSeats")int noOfSeats , HttpSession session , Model m) {
+	public String checkAvailabilty(@RequestParam("flightId")String flightId , @RequestParam("noOfSeats")int noOfSeats, 
+			HttpSession session , Model m) throws FlightSeatsNotAvailableException{
 		String userId = (String) session.getAttribute("userId");
 		if(userId==null) return "redirect:/userLoginNav";
 		if(fs.isSeatsAvilable(flightId, noOfSeats)) {
@@ -51,8 +63,8 @@ public class ViewFlightDetailsController {
 			session.setAttribute("price", price );
 			return "redirect:/flightPaymentValidation";
 		}
-		m.addAttribute("message" , "No seat avilable");
-		return "bookFlightPage";
+		logger.error("Seats "+noOfSeats+" wanting to be booked are more than seats currently available");
+		throw new FlightSeatsNotAvailableException("Seats wanting to be booked are more than seats currently available");
 	}
 	@RequestMapping("viewMyFlightBooking")
 	public String viewMyFlightBooking(Model m , HttpSession session) throws NoFlightBookingException {
@@ -64,6 +76,7 @@ public class ViewFlightDetailsController {
 			m.addAttribute("list", flight);
 			return "viewMyBookingPage";
 		}
-		throw new NoFlightBookingException("No Flight Booking by user");
+		logger.error("No Flights booked by user "+userId);
+		throw new NoFlightBookingException("No Flight Booking by user ");
 	}
 }

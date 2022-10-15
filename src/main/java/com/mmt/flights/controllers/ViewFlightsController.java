@@ -24,8 +24,6 @@ public class ViewFlightsController {
 
 	@ExceptionHandler(value = FlightNotFoundForSourceToDestinationException.class)
 	public String FlightNotFoundForSourceToDestinationException(Model m) {
-		m.addAttribute("message", "No Flight Found");
-		logger.error("No Flight from source to destination");
 		return "resultFlightPage";
 	}
 
@@ -38,7 +36,8 @@ public class ViewFlightsController {
 			m.addAttribute("flightList", list);
 			return "resultFlightPage";
 		}
-		throw new FlightNotFoundForSourceToDestinationException("no Flight for destination");
+		logger.error("No Flight from source "+source+ " to destination "+destination);
+		throw new FlightNotFoundForSourceToDestinationException("Error 404. No Flight Found");
 	}
 
 	@RequestMapping("checkFlight")

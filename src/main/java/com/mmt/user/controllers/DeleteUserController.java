@@ -7,7 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.mmt.user.exceptions.UserNotDeletedException;
 import com.mmt.user.services.UserServiceInterface;
 
 @Controller
@@ -17,8 +20,18 @@ public class DeleteUserController {
 	
 	Logger logger = LoggerFactory.getLogger(DeleteUserController.class);
 	
+	
+	@ExceptionHandler(value = UserNotDeletedException.class)
+	public String userNotDeletedExceptionHandler(Model m)
+	{
+		m.addAttribute("message", "user not found");
+		logger.error("User Not Found");
+		return "userHomePage";
+	}
+	
+	
 	@RequestMapping("deleteUserByUser")
-	public String deleteUserByUser(HttpSession session, Model m) {
+	public String deleteUserByUser(HttpSession session, Model m) throws UserNotDeletedException {
 		String userId = (String) session.getAttribute("userId");
 		if (userId == null)
 			return "redirect:/userLoginNav";
@@ -26,8 +39,6 @@ public class DeleteUserController {
 			session.removeAttribute("userId");
 			return "userHomePage";
 		}
-		m.addAttribute("message", "user not found");
-		logger.error("User Not Found");
-		return "userHomePage";
+		throw new UserNotDeletedException("User Not Deleted");
 	}
 }

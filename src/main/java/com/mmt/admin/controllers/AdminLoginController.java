@@ -28,10 +28,10 @@ public class AdminLoginController {
 	}
 	
 	@RequestMapping("adminLogin" )//adminLoginPage -- jsp
-	public String adminLogin(Admin admin , Model m) {
+	public String adminLogin(Admin admin , Model m) throws AdminNotFoundException{
 		if(as.login(admin)) return "adminHomePage";
 		m.addAttribute("message" , "wrong username or password");
-		return "adminLoginPage";
+		throw new AdminNotFoundException("Admin Not Found");
 	}
 	
 	@RequestMapping("adminLogout")
