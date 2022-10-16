@@ -25,12 +25,12 @@ public class AddFlightController {
     public String addFlight(@Valid @ModelAttribute("flight")Flight flight ,BindingResult br ,Model m) {
     	if(br.hasErrors()) {
     		  m.addAttribute("message" , "There is Some error");
+    	    	logger.error("Flight Not added");
+    	        return "addFlightPage"; //throw new exception
     	}else {
     		as.addFlight(flight);
             m.addAttribute("message" , "Flight added");
+            return "addFlightPage";
     	}
-    	logger.error("Flight Not added");
-        return "addFlightPage"; //throw new exception
-        
     }
 }

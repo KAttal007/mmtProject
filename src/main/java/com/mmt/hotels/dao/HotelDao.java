@@ -10,6 +10,6 @@ public interface HotelDao extends JpaRepository<Hotel, String> {
 	List<Hotel> findByHotelCity(String city);
 	List<Hotel> findByHotelCityAndIsAcTrue(String city);
 	List<Hotel> findByHotelCityAndIsAcFalse(String city);
-	List<Hotel> findByOrderByPriceAcRoom(int priceAcRoom);
-	List<Hotel> findByOrderByPriceNonAcRoom(int priceNonAcRoom);
+	List<Hotel> findByHotelCityOrderByPriceAcRoom(String city);
+	List<Hotel> findByHotelCityOrderByPriceNonAcRoom(String city);
 }
